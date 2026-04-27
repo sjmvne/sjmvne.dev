@@ -40,7 +40,6 @@ export function MobileMenu({
   open: boolean;
   onClose: () => void;
 }) {
-  // Prevent body scroll when menu is open
   useEffect(() => {
     if (!open) return;
     const originalOverflow = document.body.style.overflow;
@@ -61,22 +60,22 @@ export function MobileMenu({
     <AnimatePresence>
       {open && (
         <div className="fixed inset-0 z-[10000] md:hidden">
-          {/* Backdrop */}
+          {/* Backdrop - Explicitly behind the content */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            className="absolute inset-0 z-0 bg-black/60 backdrop-blur-sm"
             onClick={onClose}
           />
 
-          {/* Drawer Content */}
+          {/* Drawer Content - High Z-index */}
           <motion.div
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
-            transition={{ type: "spring", damping: 30, stiffness: 300, mass: 0.8 }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
             drag="y"
             dragConstraints={{ top: 0, bottom: 0 }}
             dragElastic={{ top: 0, bottom: 0.5 }}
@@ -85,7 +84,7 @@ export function MobileMenu({
             }}
             onClick={(e) => e.stopPropagation()}
             className={cn(
-              "absolute inset-x-0 bottom-0 flex max-h-[92dvh] flex-col overflow-hidden",
+              "absolute inset-x-0 bottom-0 z-10 flex max-h-[92dvh] flex-col overflow-hidden",
               "rounded-t-[2.5rem] border-t border-border bg-background",
               "shadow-[0_-20px_60px_-15px_rgba(0,0,0,0.5)]",
             )}
