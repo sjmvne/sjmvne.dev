@@ -43,12 +43,15 @@ export function SiteHeader() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       style={{ zIndex: 10000 }}
-      className="fixed inset-x-0 top-4 mx-auto flex w-fit items-center gap-2 rounded-full border border-border/40 bg-background/60 p-1.5 backdrop-blur-md pointer-events-auto shadow-2xl sm:top-6"
+      className={cn(
+        "fixed inset-x-0 top-0 flex w-full items-center justify-between border-b border-border/40 bg-background/80 p-2.5 backdrop-blur-xl transition-all duration-300",
+        "md:top-6 md:mx-auto md:w-fit md:rounded-full md:border md:bg-background/60 md:p-1.5 md:shadow-2xl"
+      )}
     >
       {/* Logo */}
       <TerminalLink
         href="/"
-        className="font-mono text-sm tracking-tight text-foreground transition-colors hover:text-accent pl-3 pr-2"
+        className="font-mono text-sm tracking-tight text-foreground transition-colors hover:text-accent px-3 py-1.5"
       >
         sjmvne<span className="text-accent">.dev</span>
       </TerminalLink>
@@ -72,7 +75,7 @@ export function SiteHeader() {
       {/* Actions */}
       <div className="flex items-center gap-1">
         <div className="hidden h-4 w-[1px] bg-border/40 md:mx-1 md:block" />
-        <ThemeToggle />
+        <ThemeToggle className="hidden md:inline-flex" />
         
         <button
           type="button"
