@@ -42,7 +42,8 @@ export function SiteHeader() {
     <motion.header
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="fixed inset-x-0 top-4 z-[10000] mx-auto flex w-fit items-center gap-2 rounded-full border border-border/40 bg-background/60 p-1.5 backdrop-blur-md pointer-events-auto shadow-2xl sm:top-6"
+      style={{ zIndex: 10000 }}
+      className="fixed inset-x-0 top-4 mx-auto flex w-fit items-center gap-2 rounded-full border border-border/40 bg-background/60 p-1.5 backdrop-blur-md pointer-events-auto shadow-2xl sm:top-6"
     >
       {/* Logo */}
       <TerminalLink
@@ -81,8 +82,9 @@ export function SiteHeader() {
           }}
           aria-label="Apri menu"
           aria-expanded={open}
+          style={{ zIndex: 10001 }}
           className={cn(
-            "relative z-50 inline-flex h-11 w-11 items-center justify-center rounded-full md:hidden",
+            "relative inline-flex h-11 w-11 items-center justify-center rounded-full md:hidden",
             "border border-border bg-surface/40 text-foreground/80",
             "transition-all active:scale-95 touch-manipulation",
             "hover:text-accent hover:border-accent/40",

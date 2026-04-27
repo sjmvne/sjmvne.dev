@@ -7,6 +7,7 @@ import {
   Home,
   Mail,
   MapPin,
+  Menu,
   PawPrint,
   Sparkles,
   Terminal,
@@ -16,7 +17,8 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 
@@ -40,6 +42,12 @@ export function MobileMenu({
   open: boolean;
   onClose: () => void;
 }) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   useEffect(() => {
     if (!open) return;
     const originalOverflow = document.body.style.overflow;
@@ -56,8 +64,10 @@ export function MobileMenu({
     };
   }, [open, onClose]);
 
-  return (
-    <AnimatePresence>
+  if (!mounted) return null;
+
+  const menuContent = (
+    <AnimatePresence mode="wait">
       {open && (
         <motion.div
           key="mobile-menu-portal"
@@ -65,9 +75,10 @@ export function MobileMenu({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-[10001] flex md:hidden pointer-events-auto"
+          style={{ zIndex: 20000 }}
+          className="fixed inset-0 flex md:hidden pointer-events-auto"
         >
-          {/* Backdrop - Explicitly behind the content */}
+          {/* Backdrop */}
           <motion.div
             key="mobile-menu-backdrop"
             initial={{ opacity: 0 }}
@@ -78,7 +89,7 @@ export function MobileMenu({
             onClick={onClose}
           />
 
-          {/* Drawer Content - High Z-index */}
+          {/* Drawer Content */}
           <motion.div
             key="mobile-menu-drawer"
             initial={{ y: "100%" }}
@@ -87,62 +98,41 @@ export function MobileMenu({
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
             drag="y"
             dragConstraints={{ top: 0, bottom: 0 }}
-            dragElastic={{ top: 0, bottom: 0.5 }}
+            dragElastic={0.1}
             onDragEnd={(_, info) => {
-              if (info.offset.y > 100 || info.velocity.y > 400) onClose();
+              if (info.offset.y > 100) onClose();
             }}
             onClick={(e) => e.stopPropagation()}
-            className={cn(
-              "absolute inset-x-0 bottom-0 z-10 flex max-h-[92dvh] flex-col overflow-hidden",
-              "rounded-t-[2.5rem] border-t border-border bg-background",
-              "shadow-[0_-20px_60px_-15px_rgba(0,0,0,0.5)]",
-            )}
+            className="relative mt-auto flex max-h-[92vh] w-full flex-col rounded-t-[2.5rem] border-t border-border bg-background shadow-2xl"
           >
             {/* Handle bar */}
-            <div className="flex shrink-0 items-center justify-center pt-4 pb-2">
+            <div className="flex h-10 w-full shrink-0 items-center justify-center">
               <div className="h-1.5 w-12 rounded-full bg-border/60" />
             </div>
 
             {/* Header */}
-            <div className="flex shrink-0 items-center justify-between px-8 pb-6">
+            <div className="flex items-center justify-between px-8 py-2">
               <div className="flex flex-col">
-                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
-                  Navigation
+                <span className="font-mono text-xs uppercase tracking-wider text-accent">
+                  Navigazione
                 </span>
-                <span className="font-mono text-xs text-muted">
-                  Scegli una destinazione
-                </span>
+                <h2 className="text-2xl font-bold tracking-tight">Menu</h2>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
                 <ThemeToggle />
                 <button
                   type="button"
                   onClick={onClose}
-                  aria-label="Chiudi"
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-surface/60 text-foreground transition-all active:scale-90"
+                  className="flex h-12 w-12 items-center justify-center rounded-2xl border border-border bg-surface/50 text-foreground transition-all active:scale-90"
                 >
-                  <X className="h-5 w-5" />
+                  <X className="h-6 w-6" />
                 </button>
               </div>
             </div>
 
-            {/* Navigation List */}
-            <nav className="flex-1 overflow-y-auto px-6 pb-4">
-              <ul className="flex flex-col gap-2">
-                <li>
-                  <Link
-                    href="/"
-                    onClick={onClose}
-                    className="group flex items-center gap-5 rounded-2xl p-4 transition-all active:bg-accent-soft"
-                  >
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface text-muted group-active:border-accent/30 group-active:text-accent">
-                      <Home className="h-5 w-5" />
-                    </div>
-                    <span className="flex-1 text-xl font-medium tracking-tight">Home</span>
-                    <span className="font-mono text-[10px] text-muted opacity-50">00</span>
-                  </Link>
-                </li>
-                
+            {/* Nav Links */}
+            <nav className="flex-1 overflow-y-auto px-6 py-8">
+              <ul className="flex flex-col gap-3">
                 {nav.map((item) => {
                   const Icon = item.icon;
                   return (
@@ -197,4 +187,6 @@ export function MobileMenu({
       )}
     </AnimatePresence>
   );
+
+  return createPortal(menuContent, document.body);
 }
