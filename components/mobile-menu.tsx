@@ -59,9 +59,17 @@ export function MobileMenu({
   return (
     <AnimatePresence>
       {open && (
-        <div className="fixed inset-0 z-[10000] md:hidden">
+        <motion.div
+          key="mobile-menu-portal"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          className="fixed inset-0 z-[10000] flex md:hidden pointer-events-auto"
+        >
           {/* Backdrop - Explicitly behind the content */}
           <motion.div
+            key="mobile-menu-backdrop"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -72,6 +80,7 @@ export function MobileMenu({
 
           {/* Drawer Content - High Z-index */}
           <motion.div
+            key="mobile-menu-drawer"
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "100%" }}

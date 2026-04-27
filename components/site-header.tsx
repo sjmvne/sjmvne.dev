@@ -81,11 +81,14 @@ export function SiteHeader() {
             
             <button
               type="button"
-              onClick={() => setOpen(true)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setOpen(true);
+              }}
               aria-label="Apri menu"
               aria-expanded={open}
               className={cn(
-                "inline-flex h-10 w-10 items-center justify-center rounded-full md:hidden",
+                "relative z-50 inline-flex h-11 w-11 items-center justify-center rounded-full md:hidden",
                 "border border-border bg-surface/40 text-foreground/80",
                 "transition-all active:scale-95",
                 "hover:text-accent hover:border-accent/40",
