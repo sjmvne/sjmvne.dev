@@ -169,10 +169,6 @@ export function SkillsSection() {
           </span>
         </div>
         <div className="flex flex-wrap justify-center gap-6">
-          {/* ... - .- -.-- */}
-          <div className="absolute right-4 bottom-2 opacity-10 font-mono text-[8px] tracking-[0.3em] pointer-events-none">
-            ... - .- -.--
-          </div>
           <div className="flex items-center gap-3">
             <SignalBars level="Mastery" />
             <span className="font-mono text-[10px] uppercase tracking-tighter text-foreground/70">
@@ -235,6 +231,11 @@ export function SkillsSection() {
           ))}
         </div>
 
+      </div>
+
+      {/* Morse code hint: S T A Y */}
+      <div className="mt-8 flex justify-center opacity-10 font-mono text-[10px] tracking-[0.5em] pointer-events-none">
+        ... - .- -.--
       </div>
     </section>
   );
