@@ -129,6 +129,7 @@ export type Skill = {
   name: string;
   level: SkillLevel;
   note?: string;
+  icon: string;
 };
 
 export type SkillGroup = {
@@ -144,13 +145,12 @@ export const skillGroups: SkillGroup[] = [
     label: "MES / ERP",
     description: "Il mio core professionale",
     skills: [
-      { name: "SAP MII", level: "Senior", note: "Workbench, XacuteQuery, Illuminator" },
-      { name: "SAPUI5 / OpenUI5", level: "Senior", note: "MVC, Web Workers, i18n" },
-      { name: "SAP ME", level: "Working" },
-      { name: "SAP PCo", level: "Working" },
-      { name: "ABAP", level: "Working" },
-      { name: "DELMIA Apriso", level: "Working", note: "Process Builder, BC, DFC" },
-      { name: "Oracle ERP ↔ MES", level: "Working" },
+      { name: "SAPUI5", level: "Senior", icon: "LayoutDashboard" },
+      { name: "SAP MII", level: "Senior", note: "PCo, BLS, SSCE", icon: "Factory" },
+      { name: "SAP PCo", level: "Working", icon: "Network" },
+      { name: "ABAP", level: "Working", icon: "FileCode" },
+      { name: "DELMIA Apriso", level: "Working", note: "Process Builder, BC, DFC", icon: "Settings" },
+      { name: "Oracle ERP ↔ MES", level: "Working", icon: "ArrowLeftRight" },
     ],
   },
   {
@@ -158,12 +158,12 @@ export const skillGroups: SkillGroup[] = [
     label: "Frontend",
     description: "Enterprise e progetti web",
     skills: [
-      { name: "JavaScript ES6", level: "Senior" },
-      { name: "HTML / CSS", level: "Senior" },
-      { name: "XML Views & Fragments", level: "Senior" },
-      { name: "React / Next.js", level: "Working" },
-      { name: "Tailwind CSS", level: "Working" },
-      { name: "WordPress", level: "Working" },
+      { name: "JavaScript ES6", level: "Senior", icon: "FileJson" },
+      { name: "HTML / CSS", level: "Senior", icon: "Layout" },
+      { name: "XML Views & Fragments", level: "Senior", icon: "CodeXml" },
+      { name: "React / Next.js", level: "Working", icon: "Atom" },
+      { name: "Tailwind CSS", level: "Working", icon: "Paintbrush" },
+      { name: "WordPress", level: "Working", icon: "LayoutTemplate" },
     ],
   },
   {
@@ -171,12 +171,12 @@ export const skillGroups: SkillGroup[] = [
     label: "Backend & Data",
     description: "Database e integrazioni",
     skills: [
-      { name: "SQL Server", level: "Working" },
-      { name: "Oracle", level: "Familiar" },
-      { name: "SAP HANA", level: "Familiar" },
-      { name: "REST / JSON APIs", level: "Senior" },
-      { name: "OData", level: "Working" },
-      { name: "Java", level: "Familiar" },
+      { name: "SQL Server", level: "Working", icon: "Database" },
+      { name: "Oracle", level: "Familiar", icon: "DatabaseBackup" },
+      { name: "SAP HANA", level: "Familiar", icon: "Server" },
+      { name: "REST / JSON APIs", level: "Senior", icon: "Braces" },
+      { name: "OData", level: "Working", icon: "Globe" },
+      { name: "Java", level: "Familiar", icon: "Coffee" },
     ],
   },
   {
@@ -184,12 +184,12 @@ export const skillGroups: SkillGroup[] = [
     label: "AI / LLM",
     description: "Sperimentazione e automazione",
     skills: [
-      { name: "Anthropic API", level: "Working", note: "Uso quotidiano" },
-      { name: "MCP (Model Context Protocol)", level: "Working" },
-      { name: "Prompt Engineering", level: "Working" },
-      { name: "Retrieval / BM25", level: "Working" },
-      { name: "Perplexity API", level: "Familiar" },
-      { name: "RAG offline", level: "Working", note: "llama.cpp, GGUF" },
+      { name: "Anthropic API", level: "Working", note: "Uso quotidiano", icon: "Brain" },
+      { name: "MCP (Model Context Protocol)", level: "Working", icon: "Plug" },
+      { name: "Prompt Engineering", level: "Working", icon: "Terminal" },
+      { name: "Retrieval / BM25", level: "Working", icon: "Search" },
+      { name: "Perplexity API", level: "Familiar", icon: "Compass" },
+      { name: "RAG offline", level: "Working", note: "llama.cpp, GGUF", icon: "FileText" },
     ],
   },
   {
@@ -197,9 +197,9 @@ export const skillGroups: SkillGroup[] = [
     label: "Integrazione / IoT",
     description: "Dalle macchine al database",
     skills: [
-      { name: "OPC UA / DA", level: "Working" },
-      { name: "MQTT", level: "Working" },
-      { name: "IoT Gateway Eurotech", level: "Working" },
+      { name: "OPC UA / DA", level: "Working", icon: "RadioTower" },
+      { name: "MQTT", level: "Working", icon: "Cable" },
+      { name: "IoT Gateway Eurotech", level: "Working", icon: "Cpu" },
     ],
   },
   {
@@ -207,11 +207,11 @@ export const skillGroups: SkillGroup[] = [
     label: "Design & Media",
     description: "Post-produzione e 3D per passione",
     skills: [
-      { name: "Adobe Photoshop", level: "Working" },
-      { name: "Adobe Lightroom", level: "Working" },
-      { name: "Adobe Illustrator", level: "Familiar" },
-      { name: "Adobe After Effects", level: "Familiar" },
-      { name: "Blender", level: "Familiar", note: "Render per Lisa Corti" },
+      { name: "Adobe Photoshop", level: "Working", icon: "Image" },
+      { name: "Adobe Lightroom", level: "Working", icon: "Sliders" },
+      { name: "Adobe Illustrator", level: "Familiar", icon: "PenTool" },
+      { name: "Adobe After Effects", level: "Familiar", icon: "Video" },
+      { name: "Blender", level: "Familiar", note: "Render per Lisa Corti", icon: "Box" },
     ],
   },
 ];

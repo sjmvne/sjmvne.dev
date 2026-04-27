@@ -1,36 +1,82 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { levelTone, skillGroups, type SkillLevel } from "@/lib/site-data";
+import { skillGroups, type Skill } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import { useSkillsReveal } from "@/lib/gsap-animations";
+import * as Icons from "lucide-react";
 
-const levels: SkillLevel[] = ["Senior", "Working", "Familiar", "Exposure"];
+// For mobile scroll detection
+function useInCenter(ref: React.RefObject<Element | null>) {
+  const [inCenter, setInCenter] = useState(false);
 
-// Bar widths per level for the "signal strength" indicator
-const levelBar: Record<SkillLevel, number> = {
-  Senior: 3,
-  Working: 2,
-  Familiar: 1,
-  Exposure: 0,
-};
+  useEffect(() => {
+    if (!ref.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInCenter(entry.isIntersecting);
+      },
+      {
+        // trigger when the element is within the middle 20% of the viewport height
+        rootMargin: "-40% 0px -40% 0px",
+        threshold: 0,
+      }
+    );
+    observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [ref]);
 
-function SignalBars({ level }: { level: SkillLevel }) {
-  const filled = levelBar[level];
+  return inCenter;
+}
+
+function SkillNode({ skill }: { skill: Skill }) {
+  const nodeRef = useRef<HTMLDivElement>(null);
+  const inCenter = useInCenter(nodeRef);
+  
+  // Dynamically get the icon component
+  const IconComponent = (Icons as any)[skill.icon] || Icons.Code;
+
+  // The skill's level defines the "pin" color
+  const pinColor = 
+    skill.level === "Senior" ? "bg-accent shadow-[0_0_8px_rgba(139,92,246,0.8)]" :
+    skill.level === "Working" ? "bg-foreground/50" :
+    "bg-muted/30";
+
   return (
-    <span className="flex items-end gap-[3px]" aria-label={level}>
-      {[1, 2, 3].map((i) => (
-        <span
-          key={i}
-          className={cn(
-            "w-[3px] rounded-[1px] transition-colors duration-300",
-            i <= filled ? "bg-current" : "bg-current opacity-20",
-          )}
-          style={{ height: `${5 + i * 3}px` }}
-        />
-      ))}
-    </span>
+    <div
+      ref={nodeRef}
+      className={cn(
+        "group relative flex aspect-square items-center justify-center rounded-xl",
+        "border border-border/60 bg-surface/80 backdrop-blur-sm transition-all duration-300",
+        "hover:border-accent/40 hover:bg-accent-soft/30 hover:shadow-lg hover:-translate-y-1 hover:z-10",
+        // Force hover state on mobile when in center
+        inCenter && "max-md:border-accent/40 max-md:bg-accent-soft/30 max-md:shadow-lg max-md:-translate-y-1 max-md:z-10"
+      )}
+    >
+      {/* Circuit Pins */}
+      <div className={cn("absolute -left-1 top-2 h-1.5 w-1.5 rounded-full transition-colors", pinColor)} />
+      <div className={cn("absolute -right-1 bottom-2 h-1.5 w-1.5 rounded-full transition-colors", pinColor)} />
+
+      <IconComponent className={cn(
+        "h-6 w-6 text-muted transition-colors duration-300",
+        "group-hover:text-accent",
+        inCenter && "max-md:text-accent"
+      )} />
+
+      {/* Label Tooltip */}
+      <div
+        className={cn(
+          "pointer-events-none absolute -bottom-10 left-1/2 -translate-x-1/2 rounded-md border border-border/80 bg-background/95 px-2.5 py-1 text-center font-mono text-[10px] whitespace-nowrap shadow-xl backdrop-blur-md",
+          "opacity-0 transition-all duration-300 translate-y-2 z-20",
+          "group-hover:opacity-100 group-hover:translate-y-0",
+          inCenter && "max-md:opacity-100 max-md:translate-y-0"
+        )}
+      >
+        <span className="block font-medium text-foreground">{skill.name}</span>
+        <span className="block text-[9px] text-muted">{skill.level}</span>
+      </div>
+    </div>
   );
 }
 
@@ -48,27 +94,11 @@ export function SkillsSection() {
     >
       <SectionHeading
         eyebrow="03 · Skills"
-        title="Mappa tecnica, livelli onesti."
-        description="Niente superlativi. Ogni voce ha un grado reale basato su anni di progetti in produzione, non su corsi guardati a metà."
+        title="Hardware logic, digital execution."
+        description="Niente superlativi. Solo gli strumenti che compongono il mio circuito operativo quotidiano, dalla fabbrica al cloud."
       />
 
-      {/* Legend */}
-      <div className="mt-10 flex flex-wrap gap-3 font-mono text-xs">
-        {levels.map((lvl) => (
-          <span
-            key={lvl}
-            className={cn(
-              "inline-flex items-center gap-2 rounded-md border px-3 py-1.5",
-              levelTone[lvl],
-            )}
-          >
-            <SignalBars level={lvl} />
-            {lvl}
-          </span>
-        ))}
-      </div>
-
-      {/* Category tabs */}
+      {/* Category tabs - "Breadboard" style */}
       <nav className="mt-10 flex flex-wrap gap-2" aria-label="Categorie skill">
         {skillGroups.map((g) => {
           const active = g.id === activeId;
@@ -102,55 +132,32 @@ export function SkillsSection() {
         })}
       </nav>
 
-      {/* Bento grid — "control panel" feel */}
-      <div className="mt-10">
-        <div className="mb-6 flex flex-col gap-1">
-          <h3 className="text-2xl font-semibold tracking-tighter">
-            {group.label}
-          </h3>
-          <p className="text-sm text-muted text-pretty">{group.description}</p>
-        </div>
+      {/* Technical Schematic Area */}
+      <div className="relative mt-12 overflow-hidden rounded-3xl border border-border/50 bg-background/50 p-6 sm:p-12">
+        {/* Background circuit grid */}
+        <div className="circuit-grid absolute inset-0 opacity-40 mix-blend-screen" />
+        
+        {/* Animated pulses */}
+        <div className="absolute left-[20%] top-0 w-px h-32 bg-gradient-to-b from-transparent via-accent to-transparent data-pulse-y opacity-0" />
+        <div className="absolute left-[60%] top-0 w-px h-64 bg-gradient-to-b from-transparent via-accent to-transparent data-pulse-y opacity-0" style={{ animationDelay: '1.5s' }} />
+        <div className="absolute left-0 top-[30%] h-px w-64 bg-gradient-to-r from-transparent via-accent to-transparent data-pulse-x opacity-0" style={{ animationDelay: '0.5s' }} />
 
-        <ul
-          key={group.id}
-          className="grid gap-px rounded-2xl overflow-hidden border border-border/60 bg-border/40 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {group.skills.map((skill) => (
-            <li
-              key={skill.name}
-              className={cn(
-                "skill-item group relative flex items-center justify-between gap-4 p-4",
-                "bg-surface/80 backdrop-blur-sm transition-all duration-200",
-                "hover:bg-accent-soft/30",
-              )}
-            >
-              {/* Subtle left accent bar */}
-              <span
-                className={cn(
-                  "absolute left-0 top-3 bottom-3 w-[2px] rounded-r-full opacity-0 transition-opacity duration-300 group-hover:opacity-100",
-                  "bg-accent",
-                )}
-              />
-              <div className="flex min-w-0 flex-col gap-0.5 pl-3">
-                <span className="font-medium text-sm tracking-tight">{skill.name}</span>
-                {skill.note && (
-                  <span className="text-xs leading-snug text-muted">
-                    {skill.note}
-                  </span>
-                )}
-              </div>
-              <span
-                className={cn(
-                  "flex shrink-0 items-center gap-1.5 rounded-md border px-2 py-1 font-mono text-[10px] uppercase tracking-wider",
-                  levelTone[skill.level],
-                )}
-              >
-                <SignalBars level={skill.level} />
-                {skill.level}
-              </span>
-            </li>
-          ))}
-        </ul>
+        <div className="relative z-10 flex flex-col gap-6">
+          <div className="flex flex-col gap-1">
+            <h3 className="text-xl font-semibold tracking-tighter text-foreground/90">
+              {group.label} Cluster
+            </h3>
+            <p className="text-sm font-mono text-muted/70">
+              [{group.skills.length} nodi attivi]
+            </p>
+          </div>
+
+          <div className="grid grid-cols-4 gap-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10">
+            {group.skills.map((skill) => (
+              <SkillNode key={skill.name} skill={skill} />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
