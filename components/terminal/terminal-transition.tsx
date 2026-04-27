@@ -28,25 +28,28 @@ export function useTerminalNav(): TransitionFn {
 // ────────────────────────────────────────────────────────
 
 function deriveCommand(from: string, to: string): string {
+  const cleanTo = to.split("#")[0];
   const fromParts = from.split("/").filter(Boolean);
-  const toParts = to.split("/").filter(Boolean);
+  const toParts = cleanTo.split("/").filter(Boolean);
 
-  // Going to homepage
-  if (toParts.length === 0) {
+  // Going to homepage from homepage
+  if (toParts.length === 0 && fromParts.length === 0) {
     return "cd ~";
   }
 
-  // Going "back" (deeper → shallower, or same depth but different)
+  // Going "back" (deeper → shallower)
   if (toParts.length < fromParts.length) {
-    // How many levels back
     const levels = fromParts.length - toParts.length;
-    if (toParts.length === 0) return "cd ~";
-    const back = "../".repeat(levels);
+    let back = "";
+    for (let i = 0; i < levels; i++) {
+      back += "../";
+    }
+    // remove trailing slash if we just want "cd .."
+    back = back.slice(0, -1);
     return `cd ${back || ".."}`;
   }
 
   // Going deeper (e.g. / → /projects/slug)
-  // Just show the last segment
   const target = toParts[toParts.length - 1];
   if (fromParts.length === 0) {
     return `cd ${toParts.join("/")}`;
@@ -54,9 +57,8 @@ function deriveCommand(from: string, to: string): string {
 
   // Same depth navigation
   if (toParts.length === fromParts.length) {
-    // Check if going back to root
     if (toParts.length === 0) return "cd ~";
-    return `cd ../${toParts[toParts.length - 1]}`;
+    return `cd ../${target}`;
   }
 
   return `cd ${target}`;

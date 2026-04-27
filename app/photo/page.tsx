@@ -1,6 +1,7 @@
 import { ArrowLeft, Camera } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { TerminalLink } from "@/components/terminal/terminal-link";
 import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
@@ -27,13 +28,13 @@ export default function PhotoPage() {
       <SiteHeader />
       <main className="flex-1 pt-14">
         <article className="container-page py-16 sm:py-24">
-          <Link
+          <TerminalLink
             href="/#photography"
             className="group mb-12 inline-flex items-center gap-2 font-mono text-xs text-muted transition-colors hover:text-accent"
           >
             <ArrowLeft className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-1" />
             Torna alla home
-          </Link>
+          </TerminalLink>
 
           <header className="relative mb-14 flex flex-col gap-6">
             <div
