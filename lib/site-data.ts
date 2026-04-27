@@ -725,6 +725,7 @@ export const travels: TravelCity[] = [
   { city: "Nazarè", country: "Portogallo", coords: [39.6012, -9.0704] },
   { city: "Cracovia", country: "Polonia", coords: [50.0647, 19.9450] },
   { city: "Malmo", country: "Svezia", coords: [55.6049, 13.0038] },
+  { city: "Palma di Maiorca", country: "Spagna", coords: [39.569055, 2.645000] }
 ];
 
 export const dogs = [
@@ -733,14 +734,14 @@ export const dogs = [
     breed: "Border Collie",
     age: "5 anni",
     description:
-      "Border Collie classico: più intelligente di me, mi guarda come se stesse già calcolando il refactoring del mio codice prima ancora che io prema Invio. In vacanza vuole sempre sapere dove stiamo andando prima di noi.",
+      "Il classico: più intelligente di me, mi guarda come se stesse già calcolando il refactoring del mio codice prima ancora che io prema Invio. Vuole sempre sapere dove stiamo andando prima di noi.",
   },
   {
     name: "Lady",
     breed: "Pastore Australiano",
     age: "3 anni",
     description:
-      "Dolce e perennemente in cerca di coccole. Whisky le ha insegnato tutti i giochi, ma il risultato è una sua interpretazione personale — decisamente più caotica e rumorosa.",
+      "Dolce e perennemente in cerca di coccole. Ama la natura, il cibo, il cibo e il cibo.",
   },
 ];
 
