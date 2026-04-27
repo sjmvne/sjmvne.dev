@@ -6,6 +6,9 @@ import { skillGroups, type SkillLevel, type Skill } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import { useSkillsReveal } from "@/lib/gsap-animations";
 import { GravityWrapper } from "@/components/motion/gravity-wrapper";
+import { MotherboardScene } from "../motion/motherboard-3d/motherboard-scene";
+import { useReducedMotion } from "motion/react";
+import { useEffect, useState } from "react";
 import * as LucideIcons from "lucide-react";
 import {
   SiSap,
@@ -147,6 +150,25 @@ function SkillChip({ skill }: { skill: Skill }) {
 
 export function SkillsSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [view3D, setView3D] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const reduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    
+    // Enable 3D by default on desktop if not reduced motion
+    if (window.innerWidth >= 1024 && !reduceMotion) {
+      setView3D(true);
+    }
+    
+    return () => window.removeEventListener("resize", checkMobile);
+  }, [reduceMotion]);
+
   useSkillsReveal(sectionRef);
 
   return (
@@ -155,11 +177,24 @@ export function SkillsSection() {
       id="skills"
       className="container-page relative scroll-mt-24 overflow-hidden py-28 sm:py-40"
     >
-      <SectionHeading
-        eyebrow="03 · Skills"
-        title="Logic Board."
-        description="Il mio intero ecosistema tecnologico mappato su un'unica motherboard. Dai componenti core in fabbrica (MES) ai co-processori cloud e AI."
-      />
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <SectionHeading
+          eyebrow="03 · Skills"
+          title="Logic Board."
+          description="Il mio intero ecosistema tecnologico mappato su un'unica motherboard. Dai componenti core in fabbrica (MES) ai co-processori cloud e AI."
+        />
+        
+        {/* View Toggle - Now visible on mobile too */}
+        {!reduceMotion && (
+          <button 
+            onClick={() => setView3D(!view3D)}
+            className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-accent border border-accent/20 bg-accent/5 px-4 py-2 rounded-full hover:bg-accent/10 transition-all hover:border-accent/40 active:scale-95 self-center md:self-end mb-4 md:mb-8"
+          >
+            <LucideIcons.Box className="h-3 w-3" />
+            {view3D ? "Vista 2D" : "Vista 3D"}
+          </button>
+        )}
+      </div>
 
       {/* Signal Legend - Moved to the top */}
       <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 rounded-xl border border-accent/10 bg-surface/30 p-4 sm:p-6">
@@ -197,40 +232,59 @@ export function SkillsSection() {
       </div>
 
       {/* Unified Motherboard Container */}
-      <div className="relative mt-8 overflow-hidden rounded-3xl border-2 border-border/60 bg-[#0a0a0c] p-4 sm:p-8 md:p-12 shadow-2xl">
-        {/* Background circuit grid */}
-        <div className="circuit-grid absolute inset-0 opacity-100" />
-        
-        {/* Animated pulses */}
-        <div className="absolute left-[20%] top-0 w-[2px] h-32 bg-gradient-to-b from-transparent via-accent to-transparent data-pulse-y opacity-0 z-0" />
-        <div className="absolute left-[60%] top-0 w-[2px] h-64 bg-gradient-to-b from-transparent via-accent to-transparent data-pulse-y opacity-0 z-0" style={{ animationDelay: '1.5s' }} />
-        <div className="absolute left-0 top-[40%] h-[2px] w-64 bg-gradient-to-r from-transparent via-accent to-transparent data-pulse-x opacity-0 z-0" style={{ animationDelay: '0.5s' }} />
-        <div className="absolute left-0 top-[70%] h-[2px] w-96 bg-gradient-to-r from-transparent via-accent to-transparent data-pulse-x opacity-0 z-0" style={{ animationDelay: '2.5s' }} />
-
-        <div className="relative z-10 flex flex-col gap-8 sm:gap-12">
-          {skillGroups.map((group) => (
-            <div key={group.id} className="relative">
-              <div className="p-2 sm:p-4">
-                {/* Zone Label */}
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="h-[1px] w-6 bg-accent/30" />
-                  <h3 className="font-mono text-[10px] text-accent tracking-[0.2em] uppercase">
-                    [ AREA: {group.label} ]
-                  </h3>
-                  <div className="h-[1px] flex-grow bg-accent/10" />
-                </div>
-
-                {/* Chips Grid */}
-                <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
-                  {group.skills.map((skill) => (
-                    <SkillChip key={skill.name} skill={skill} />
-                  ))}
-                </div>
+      <div className={cn(
+        "relative mt-8 overflow-hidden rounded-3xl border-2 border-border/60 bg-[#0a0a0c] shadow-2xl transition-all duration-500",
+        view3D ? "p-0" : "p-4 sm:p-8 md:p-12"
+      )}>
+        {view3D ? (
+          <div className="relative h-[500px] sm:h-[600px] md:h-[700px]">
+            <MotherboardScene />
+            
+            {/* 3D View Overlays */}
+            <div className="pointer-events-none absolute bottom-6 left-6 z-10 flex flex-col gap-1 font-mono text-[10px] uppercase tracking-widest text-muted/60">
+              <div className="flex items-center gap-2">
+                <div className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+                <span>3D Render Engine Active</span>
               </div>
+              <span>Drag to tilt · Hover chips to lift</span>
             </div>
-          ))}
-        </div>
+          </div>
+        ) : (
+          <>
+            {/* Background circuit grid */}
+            <div className="circuit-grid absolute inset-0 opacity-100" />
+            
+            {/* Animated pulses */}
+            <div className="absolute left-[20%] top-0 w-[2px] h-32 bg-gradient-to-b from-transparent via-accent to-transparent data-pulse-y opacity-0 z-0" />
+            <div className="absolute left-[60%] top-0 w-[2px] h-64 bg-gradient-to-b from-transparent via-accent to-transparent data-pulse-y opacity-0 z-0" style={{ animationDelay: '1.5s' }} />
+            <div className="absolute left-0 top-[40%] h-[2px] w-64 bg-gradient-to-r from-transparent via-accent to-transparent data-pulse-x opacity-0 z-0" style={{ animationDelay: '0.5s' }} />
+            <div className="absolute left-0 top-[70%] h-[2px] w-96 bg-gradient-to-r from-transparent via-accent to-transparent data-pulse-x opacity-0 z-0" style={{ animationDelay: '2.5s' }} />
 
+            <div className="relative z-10 flex flex-col gap-8 sm:gap-12">
+              {skillGroups.map((group) => (
+                <div key={group.id} className="relative">
+                  <div className="p-2 sm:p-4">
+                    {/* Zone Label */}
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="h-[1px] w-6 bg-accent/30" />
+                      <h3 className="font-mono text-[10px] text-accent tracking-[0.2em] uppercase">
+                        [ AREA: {group.label} ]
+                      </h3>
+                      <div className="h-[1px] flex-grow bg-accent/10" />
+                    </div>
+
+                    {/* Chips Grid */}
+                    <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
+                      {group.skills.map((skill) => (
+                        <SkillChip key={skill.name} skill={skill} />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
       </div>
 
       {/* Morse code hint: S T A Y */}
