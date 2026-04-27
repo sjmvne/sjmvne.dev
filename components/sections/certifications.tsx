@@ -14,7 +14,7 @@ export function CertificationsSection() {
         <SectionHeading
           eyebrow="06 · Certs"
           title="Certificazioni"
-          description="Tre badge Dassault Systèmes presi tra ottobre e novembre 2025. Engineering Claude in corso."
+          description="Badge Dassault Systèmes presi tra ottobre e novembre 2025 e percorso di Engineering Claude."
         />
       </Reveal>
 
@@ -58,12 +58,6 @@ export function CertificationsSection() {
                 <p className="font-mono text-xs text-muted">
                   {c.issuer} · {c.date}
                 </p>
-                {!earned && (
-                  <span className="mt-1 inline-flex w-fit items-center gap-1.5 rounded-full border border-accent/30 bg-accent-soft px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-accent">
-                    <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-                    In corso
-                  </span>
-                )}
               </div>
             </Reveal>
           );
