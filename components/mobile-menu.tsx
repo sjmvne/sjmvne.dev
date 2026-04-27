@@ -193,7 +193,7 @@ export function MobileMenu({
               </a>
             </div>
           </motion.div>
-        </div>
+        </motion.div>
       )}
     </AnimatePresence>
   );
