@@ -1,3 +1,4 @@
+import { FileText, Download } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { GravityWrapper } from "@/components/motion/gravity-wrapper";
 
