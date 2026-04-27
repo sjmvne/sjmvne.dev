@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils";
 import { useSkillsReveal } from "@/lib/gsap-animations";
 import { GravityWrapper } from "@/components/motion/gravity-wrapper";
 import { MotherboardScene } from "../motion/motherboard-3d/motherboard-scene";
+import { useInterstellar } from "@/components/providers/interstellar-provider";
+import { getTarsifiedText } from "@/lib/tars-brain";
 import { useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
 import * as LucideIcons from "lucide-react";
@@ -149,6 +151,7 @@ function SkillChip({ skill }: { skill: Skill }) {
 }
 
 export function SkillsSection() {
+  const { isInterstellarMode, humorLevel, honestyLevel } = useInterstellar();
   const sectionRef = useRef<HTMLElement>(null);
   const [view3D, setView3D] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -181,7 +184,11 @@ export function SkillsSection() {
         <SectionHeading
           eyebrow="03 · Skills"
           title="Logic Board."
-          description="Il mio intero ecosistema tecnologico mappato su un'unica motherboard. Dai componenti core in fabbrica (MES) ai co-processori cloud e AI."
+          description={
+            isInterstellarMode 
+              ? getTarsifiedText("skills-intro", "Il mio intero ecosistema tecnologico mappato su un'unica motherboard. Dai componenti core in fabbrica (MES) ai co-processori cloud e AI.", humorLevel, honestyLevel)
+              : "Il mio intero ecosistema tecnologico mappato su un'unica motherboard. Dai componenti core in fabbrica (MES) ai co-processori cloud e AI."
+          }
         />
         
         {/* View Toggle - Now visible on mobile too */}

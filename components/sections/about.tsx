@@ -7,6 +7,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { about } from "@/lib/site-data";
 import { useAboutParallax } from "@/lib/gsap-animations";
 import { useInterstellar } from "@/components/providers/interstellar-provider";
+import { getTarsifiedText } from "@/lib/tars-brain";
 
 function parseStat(value: string) {
   const match = value.match(/^(\d+)(.*)$/);
@@ -31,10 +32,8 @@ export function AboutSection() {
             eyebrow="01 · About"
             title={about.title}
             description={
-              isInterstellarMode && honestyLevel > 90
-                ? "Scrivo codice per soldi e perché sono ossessionato dai dettagli. A volte il caffè è l'unica cosa che mi tiene in piedi."
-                : isInterstellarMode && humorLevel > 80
-                ? "Sono quella persona che debugga alle 3 di notte ridendo dei propri errori. Oppure piangendo. Dipende dal compilatore."
+              isInterstellarMode 
+                ? getTarsifiedText("about-description", "Sto in mezzo al codice da qualche anno. Un po' per chi paga lo stipendio, un po' per cose che mi vengono in mente da solo.", humorLevel, honestyLevel)
                 : "Sto in mezzo al codice da qualche anno. Un po' per chi paga lo stipendio, un po' per cose che mi vengono in mente da solo."
             }
           />

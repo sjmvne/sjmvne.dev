@@ -1,8 +1,13 @@
+"use client";
+
 import { FileText, Download } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { GravityWrapper } from "@/components/motion/gravity-wrapper";
+import { useInterstellar } from "@/components/providers/interstellar-provider";
+import { getTarsifiedText } from "@/lib/tars-brain";
 
 export function CvSection() {
+  const { isInterstellarMode, humorLevel, honestyLevel } = useInterstellar();
   return (
     <section
       id="cv"
@@ -11,7 +16,11 @@ export function CvSection() {
       <SectionHeading
         eyebrow="11 · CV"
         title="Scarica il CV."
-        description="Versione PDF aggiornata, pronta per recruiter o colleghi che vogliono un formato sfogliabile."
+        description={
+          isInterstellarMode 
+            ? getTarsifiedText("cv-intro", "Versione PDF aggiornata, pronta per recruiter o colleghi che vogliono un formato sfogliabile.", humorLevel, honestyLevel)
+            : "Versione PDF aggiornata, pronta per recruiter o colleghi che vogliono un formato sfogliabile."
+        }
       />
 
       <div className="mt-12">

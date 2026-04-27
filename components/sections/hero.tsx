@@ -13,6 +13,7 @@ import { Hero3DBackground } from "../motion/hero-3d";
 import { HeroParticles } from "../motion/hero-particles";
 import { useHeroTextReveal } from "@/lib/gsap-animations";
 import { useInterstellar } from "@/components/providers/interstellar-provider";
+import { getTarsifiedText } from "@/lib/tars-brain";
 
 export function HeroSection() {
   const { isInterstellarMode, humorLevel, honestyLevel } = useInterstellar();
@@ -100,10 +101,8 @@ export function HeroSection() {
         <p
           className="hero-reveal max-w-2xl text-balance text-base text-muted sm:text-lg md:text-xl"
         >
-          {isInterstellarMode && humorLevel > 80 ? (
-            "Spostando bit e spostando macchinari. Fondamentalmente un mago del MES, ma senza il cappello e con molta più caffeina. E sì, TARS mi sta guardando."
-          ) : isInterstellarMode && honestyLevel < 50 ? (
-            "Probabilmente il miglior developer che tu possa trovare in questo specifico file. Forse. Non chiedermi troppe conferme."
+          {isInterstellarMode ? (
+            getTarsifiedText("hero-tagline", hero.tagline, humorLevel, honestyLevel)
           ) : (
             hero.tagline
           )}

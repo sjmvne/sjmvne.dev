@@ -1,3 +1,5 @@
+"use client";
+
 import { ArrowUpRight, PawPrint } from "lucide-react";
 import Link from "next/link";
 import { TerminalLink } from "@/components/terminal/terminal-link";
@@ -6,7 +8,11 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { GravityWrapper } from "@/components/motion/gravity-wrapper";
 import { dogs } from "@/lib/site-data";
 
+import { useInterstellar } from "@/components/providers/interstellar-provider";
+import { getTarsifiedText } from "@/lib/tars-brain";
+
 export function DogsTeaserSection() {
+  const { isInterstellarMode, humorLevel, honestyLevel } = useInterstellar();
   return (
     <section
       id="dogs"
@@ -45,7 +51,9 @@ export function DogsTeaserSection() {
               </div>
             </div>
             <p className="relative mt-4 text-sm leading-relaxed text-muted">
-              {d.description}
+              {isInterstellarMode 
+                ? getTarsifiedText(`dogs-${d.name.toLowerCase()}`, d.description, humorLevel, honestyLevel)
+                : d.description}
             </p>
           </Reveal>
           </GravityWrapper>

@@ -11,6 +11,8 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { site } from "@/lib/site-data";
 import { useSignalPulse } from "@/lib/gsap-animations";
 import { GravityWrapper } from "@/components/motion/gravity-wrapper";
+import { useInterstellar } from "@/components/providers/interstellar-provider";
+import { getTarsifiedText } from "@/lib/tars-brain";
 
 const socials = [
   { Icon: LinkedinIcon, label: "LinkedIn", href: site.social.linkedin, handle: "in/simonepepe00" },
@@ -20,6 +22,7 @@ const socials = [
 ];
 
 export function ContactSection() {
+  const { isInterstellarMode, humorLevel, honestyLevel } = useInterstellar();
   const sectionRef = useRef<HTMLElement>(null);
   useSignalPulse(sectionRef);
 
@@ -63,7 +66,11 @@ export function ContactSection() {
           <SectionHeading
             eyebrow="12 · Contact"
             title="Scrivimi."
-            description="Sempre aperto a nuove sfide tecniche, collaborazioni interessanti o anche solo per fare due chiacchiere su tech e dintorni. Scrivimi pure."
+            description={
+              isInterstellarMode 
+                ? getTarsifiedText("contact-intro", "Sempre aperto a nuove sfide tecniche, collaborazioni interessanti o anche solo per fare due chiacchiere su tech e dintorni. Scrivimi pure.", humorLevel, honestyLevel)
+                : "Sempre aperto a nuove sfide tecniche, collaborazioni interessanti o anche solo per fare due chiacchiere su tech e dintorni. Scrivimi pure."
+            }
           />
           <div className="flex flex-wrap gap-6 pt-4 font-mono text-sm text-muted">
             <span className="inline-flex items-center gap-2">

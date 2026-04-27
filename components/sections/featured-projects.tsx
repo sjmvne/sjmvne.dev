@@ -9,11 +9,14 @@ import { caseStudies } from "@/lib/site-data";
 import { useHorizontalProjects } from "@/lib/gsap-animations";
 import { GravityWrapper } from "@/components/motion/gravity-wrapper";
 import { cn } from "@/lib/utils";
+import { useInterstellar } from "@/components/providers/interstellar-provider";
+import { getTarsifiedText } from "@/lib/tars-brain";
 
 // Alternating offsets to break vertical symmetry — odd cards shift right
 const CARD_OFFSETS = ["ml-0", "ml-0 sm:ml-12", "ml-0", "ml-0 sm:ml-6"];
 
 export function FeaturedProjectsSection() {
+  const { isInterstellarMode, humorLevel, honestyLevel } = useInterstellar();
   const sectionRef = useRef<HTMLElement>(null);
   useHorizontalProjects(sectionRef);
 
@@ -38,7 +41,11 @@ export function FeaturedProjectsSection() {
       <SectionHeading
         eyebrow="04 · Featured"
         title="Quattro progetti, quattro storie diverse."
-        description="Dalla dashboard SAPUI5 enterprise al dispatching real-time, passando per Lamborghini e aerospace."
+        description={
+          isInterstellarMode 
+            ? getTarsifiedText("projects-intro", "Dalla dashboard SAPUI5 enterprise al dispatching real-time, passando per Lamborghini e aerospace.", humorLevel, honestyLevel)
+            : "Dalla dashboard SAPUI5 enterprise al dispatching real-time, passando per Lamborghini e aerospace."
+        }
       />
 
       <ul className="projects-track mt-16 flex flex-col gap-5">

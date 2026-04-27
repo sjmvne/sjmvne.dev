@@ -170,7 +170,7 @@ export function TerminalTransitionProvider({
               }}
             />
 
-            <div className="relative w-[90vw] md:max-w-2xl px-4 font-mono text-lg sm:text-3xl text-violet-400 whitespace-pre-wrap break-all">
+            <div className="relative w-[90vw] md:max-w-2xl px-4 font-mono text-lg sm:text-3xl text-violet-400 whitespace-pre-wrap break-words">
               <span className="text-violet-300/70">sjmvne@dev</span>
               <span className="text-white/40">:</span>
               <span className="text-violet-500/70">~</span>

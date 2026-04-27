@@ -1,3 +1,5 @@
+"use client";
+
 import { ArrowUpRight, Camera } from "lucide-react";
 import Link from "next/link";
 import { TerminalLink } from "@/components/terminal/terminal-link";

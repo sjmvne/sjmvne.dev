@@ -1,11 +1,16 @@
+"use client";
+
 import { Award, Clock } from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { certifications } from "@/lib/site-data";
 import { GravityWrapper } from "@/components/motion/gravity-wrapper";
 import { cn } from "@/lib/utils";
+import { useInterstellar } from "@/components/providers/interstellar-provider";
+import { getTarsifiedText } from "@/lib/tars-brain";
 
 export function CertificationsSection() {
+  const { isInterstellarMode, humorLevel, honestyLevel } = useInterstellar();
   return (
     <section
       id="certifications"
@@ -15,7 +20,11 @@ export function CertificationsSection() {
         <SectionHeading
           eyebrow="06 · Certs"
           title="Certificazioni"
-          description="Badge Dassault Systèmes presi tra ottobre e novembre 2025 e percorso di Engineering Claude."
+          description={
+            isInterstellarMode 
+              ? getTarsifiedText("certs-intro", "Badge Dassault Systèmes presi tra ottobre e novembre 2025 e percorso di Engineering Claude.", humorLevel, honestyLevel)
+              : "Badge Dassault Systèmes presi tra ottobre e novembre 2025 e percorso di Engineering Claude."
+          }
         />
       </Reveal>
 
