@@ -234,8 +234,10 @@ export function SkillsSection() {
       </div>
 
       {/* Morse code hint: S T A Y */}
-      <div className="mt-8 flex justify-center opacity-10 font-mono text-[10px] tracking-[0.5em] pointer-events-none">
-        ... - .- -.--
+      <div className="mt-12 flex justify-center pointer-events-none">
+        <span className="font-mono text-sm tracking-[0.6em] bg-gradient-to-r from-muted/20 via-accent/80 to-muted/20 bg-[length:200%_auto] bg-clip-text text-transparent animate-[shimmer_4s_linear_infinite] select-none">
+          ... - .- -.--
+        </span>
       </div>
     </section>
   );
