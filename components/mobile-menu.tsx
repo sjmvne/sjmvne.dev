@@ -65,7 +65,7 @@ export function MobileMenu({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-[10000] flex md:hidden pointer-events-auto"
+          className="fixed inset-0 z-[10001] flex md:hidden pointer-events-auto"
         >
           {/* Backdrop - Explicitly behind the content */}
           <motion.div

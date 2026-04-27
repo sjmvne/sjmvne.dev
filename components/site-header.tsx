@@ -39,16 +39,11 @@ export function SiteHeader() {
 
   return (
     <>
-      <div className="fixed inset-x-0 top-0 z-[100] flex justify-center p-4 sm:p-6 pointer-events-none">
+      <div className="fixed inset-x-0 top-0 z-[10000] flex justify-center p-4 sm:p-6 pointer-events-none">
         <motion.header
-          initial={{ y: -20, opacity: 0 }}
+          initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ type: "spring", damping: 20, stiffness: 200 }}
-          className={cn(
-            "pointer-events-auto flex items-center gap-4 rounded-full border border-border/40 px-4 py-2 transition-all duration-500",
-            "glass shadow-2xl",
-            scrolled ? "bg-background/80 backdrop-blur-xl py-2.5 px-5" : "bg-background/40 py-2 px-4",
-          )}
+          className="flex items-center gap-2 rounded-full border border-border/40 bg-background/60 p-1.5 backdrop-blur-md pointer-events-auto relative shadow-2xl"
         >
           {/* Logo */}
           <TerminalLink
