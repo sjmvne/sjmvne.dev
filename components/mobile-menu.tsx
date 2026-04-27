@@ -58,11 +58,11 @@ export function MobileMenu({
     <AnimatePresence>
       {open && (
         <motion.div
-          initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-          animate={{ opacity: 1, backdropFilter: "blur(28px)" }}
-          exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-[10000] bg-background/40 backdrop-blur-3xl md:hidden"
+          className="fixed inset-0 z-[10000] bg-black/60 md:hidden"
           onClick={onClose}
           aria-modal="true"
           role="dialog"

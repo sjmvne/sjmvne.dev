@@ -3,7 +3,8 @@
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { TerminalLink } from "@/components/terminal/terminal-link";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
+import { useScroll, useMotionValueEvent } from "motion/react";
 import { MobileMenu } from "@/components/mobile-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
@@ -19,27 +20,18 @@ const navLinks = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(true);
-  const lastScrollY = useRef(0);
+  const { scrollY } = useScroll();
 
-  useEffect(() => {
-    const onScroll = () => {
-      const curr = window.scrollY;
-      // Always show at top of page
-      if (curr < 60) {
-        setVisible(true);
-      } else if (curr > lastScrollY.current) {
-        // Scrolling down → hide
-        setVisible(false);
-      } else {
-        // Scrolling up → show
-        setVisible(true);
-      }
-      lastScrollY.current = curr;
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0;
+    if (latest < 60) {
+      setVisible(true);
+    } else if (latest > previous && latest > 60) {
+      setVisible(false);
+    } else {
+      setVisible(true);
+    }
+  });
 
   useEffect(() => {
     if (open) {

@@ -203,6 +203,18 @@ export const skillGroups: SkillGroup[] = [
       { name: "Blender", level: "Familiar", icon: "Box" },
     ],
   },
+  {
+    id: "devtools",
+    label: "Dev Tools",
+    description: "Versionamento e OS",
+    skills: [
+      { name: "Git", level: "Senior", icon: "GitBranch" },
+      { name: "Linux", level: "Working", icon: "TerminalSquare" },
+      { name: "Bash", level: "Working", icon: "Terminal" },
+      { name: "VS Code", level: "Senior", icon: "Code2" },
+      { name: "Postman", level: "Working", icon: "Send" },
+    ],
+  },
 ];
 
 export const levelTone: Record<SkillLevel, string> = {
@@ -695,6 +707,24 @@ export const travels: TravelCity[] = [
   { city: "Copenhagen", country: "Danimarca", coords: [55.6761, 12.5683] },
   { city: "Siviglia", country: "Spagna", coords: [37.3886, -5.9823] },
   { city: "Milano", country: "Italia", coords: [45.4642, 9.19], note: "Home base" },
+  { city: "Venezia", country: "Italia", coords: [45.4408, 12.3155] },
+  { city: "Pisa", country: "Italia", coords: [43.7228, 10.4017] },
+  { city: "Olbia", country: "Italia", coords: [40.9233, 9.4972] },
+  { city: "Napoli", country: "Italia", coords: [40.8518, 14.2681] },
+  { city: "Bologna", country: "Italia", coords: [44.4949, 11.3426] },
+  { city: "Torino", country: "Italia", coords: [45.0703, 7.6869] },
+  { city: "Madrid", country: "Spagna", coords: [40.4168, -3.7038] },
+  { city: "Malaga", country: "Spagna", coords: [36.7213, -4.4213] },
+  { city: "Ronda", country: "Spagna", coords: [36.7423, -5.1671] },
+  { city: "Faro", country: "Portogallo", coords: [37.0194, -7.9322] },
+  { city: "Portimao", country: "Portogallo", coords: [37.1363, -8.5366] },
+  { city: "Lagos", country: "Portogallo", coords: [37.1028, -8.6711] },
+  { city: "Sagres", country: "Portogallo", coords: [37.0076, -8.9392] },
+  { city: "Peniche", country: "Portogallo", coords: [39.3558, -9.3811] },
+  { city: "Sintra", country: "Portogallo", coords: [38.8029, -9.3817] },
+  { city: "Nazarè", country: "Portogallo", coords: [39.6012, -9.0704] },
+  { city: "Cracovia", country: "Polonia", coords: [50.0647, 19.9450] },
+  { city: "Malmo", country: "Svezia", coords: [55.6049, 13.0038] },
 ];
 
 export const dogs = [

@@ -18,7 +18,11 @@ import {
   SiMqtt,
   SiBlender,
   SiAnthropic,
-  SiPerplexity
+  SiPerplexity,
+  SiGit,
+  SiLinux,
+  SiGnubash,
+  SiPostman
 } from "@icons-pack/react-simple-icons";
 
 const levels: SkillLevel[] = ["Senior", "Working", "Familiar", "Exposure"];
@@ -65,7 +69,11 @@ const skillToSimpleIcon: Record<string, any> = {
   "Blender": SiBlender,
   "Anthropic": SiAnthropic,
   "Perplexity": SiPerplexity,
-  "Claude Code": SiNextdotjs, // Temporary or more specific icon if available
+  "Claude Code": SiNextdotjs,
+  "Git": SiGit,
+  "Linux": SiLinux,
+  "Bash": SiGnubash,
+  "Postman": SiPostman,
 };
 
 function SkillChip({ skill }: { skill: Skill }) {
@@ -75,10 +83,23 @@ function SkillChip({ skill }: { skill: Skill }) {
   return (
     <div
       className={cn(
-        "group relative flex flex-col justify-between p-3 rounded-[5px]",
-        "skill-item group relative flex aspect-square flex-col items-center justify-center gap-2 overflow-hidden rounded-[5px] border border-accent/10 bg-surface/30 p-2 text-center transition-all duration-300 hover:border-accent/40 hover:bg-accent-soft/20",
+        "group relative flex aspect-square flex-col items-center justify-center gap-2 rounded-[5px]",
+        "border border-border/80 bg-surface p-2 text-center shadow-sm transition-all duration-300",
+        "hover:-translate-y-0.5 hover:border-accent/60 hover:shadow-[0_4px_16px_rgba(139,92,246,0.15)]",
       )}
     >
+      {/* Chip Pins */}
+      <div className="absolute -left-[2px] top-1/2 flex -translate-y-1/2 flex-col gap-[3px]">
+        <div className="h-1.5 w-[3px] rounded-r-sm bg-border/80 group-hover:bg-accent/40 transition-colors" />
+        <div className="h-1.5 w-[3px] rounded-r-sm bg-border/80 group-hover:bg-accent/40 transition-colors" />
+        <div className="h-1.5 w-[3px] rounded-r-sm bg-border/80 group-hover:bg-accent/40 transition-colors" />
+      </div>
+      <div className="absolute -right-[2px] top-1/2 flex -translate-y-1/2 flex-col gap-[3px]">
+        <div className="h-1.5 w-[3px] rounded-l-sm bg-border/80 group-hover:bg-accent/40 transition-colors" />
+        <div className="h-1.5 w-[3px] rounded-l-sm bg-border/80 group-hover:bg-accent/40 transition-colors" />
+        <div className="h-1.5 w-[3px] rounded-l-sm bg-border/80 group-hover:bg-accent/40 transition-colors" />
+      </div>
+
       <IconComponent className="h-5 w-5 text-muted transition-colors group-hover:text-accent sm:h-6 sm:w-6" />
       <span className="line-clamp-2 px-1 font-mono text-[10px] leading-tight text-foreground/80 sm:text-[11px]">
         {skill.name}
