@@ -39,61 +39,59 @@ export function SiteHeader() {
 
   return (
     <>
-      <div className="fixed inset-x-0 top-0 z-[10000] flex justify-center p-4 sm:p-6 pointer-events-none">
-        <motion.header
-          initial={{ y: -100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          className="flex items-center gap-2 rounded-full border border-border/40 bg-background/60 p-1.5 backdrop-blur-md pointer-events-auto relative shadow-2xl"
-        >
-          {/* Logo */}
-          <TerminalLink
-            href="/"
-            className="font-mono text-sm tracking-tight text-foreground transition-colors hover:text-accent"
+    <motion.header
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      className="fixed inset-x-0 top-4 z-[10000] mx-auto flex w-fit items-center gap-2 rounded-full border border-border/40 bg-background/60 p-1.5 backdrop-blur-md pointer-events-auto shadow-2xl sm:top-6"
+    >
+      {/* Logo */}
+      <TerminalLink
+        href="/"
+        className="font-mono text-sm tracking-tight text-foreground transition-colors hover:text-accent pl-3 pr-2"
+      >
+        sjmvne<span className="text-accent">.dev</span>
+      </TerminalLink>
+
+      {/* Divider */}
+      <div className="hidden h-4 w-[1px] bg-border/40 md:block" />
+
+      {/* Desktop Nav */}
+      <nav className="hidden items-center gap-0.5 md:flex">
+        {navLinks.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className="rounded-full px-3 py-1.5 text-[13px] font-medium text-muted transition-colors hover:text-foreground active:scale-95"
           >
-            sjmvne<span className="text-accent">.dev</span>
-          </TerminalLink>
+            {link.label}
+          </Link>
+        ))}
+      </nav>
 
-          {/* Divider */}
-          <div className="hidden h-4 w-[1px] bg-border/40 md:block" />
-
-          {/* Desktop Nav */}
-          <nav className="hidden items-center gap-0.5 md:flex">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="rounded-full px-3 py-1.5 text-[13px] font-medium text-muted transition-colors hover:text-foreground active:scale-95"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Actions */}
-          <div className="flex items-center gap-1">
-            <div className="hidden h-4 w-[1px] bg-border/40 md:mx-1 md:block" />
-            <ThemeToggle />
-            
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                setOpen(true);
-              }}
-              aria-label="Apri menu"
-              aria-expanded={open}
-              className={cn(
-                "relative z-50 inline-flex h-11 w-11 items-center justify-center rounded-full md:hidden",
-                "border border-border bg-surface/40 text-foreground/80",
-                "transition-all active:scale-95",
-                "hover:text-accent hover:border-accent/40",
-              )}
-            >
-              <Menu className="h-5 w-5" />
-            </button>
-          </div>
-        </motion.header>
+      {/* Actions */}
+      <div className="flex items-center gap-1">
+        <div className="hidden h-4 w-[1px] bg-border/40 md:mx-1 md:block" />
+        <ThemeToggle />
+        
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            setOpen(true);
+          }}
+          aria-label="Apri menu"
+          aria-expanded={open}
+          className={cn(
+            "relative z-50 inline-flex h-11 w-11 items-center justify-center rounded-full md:hidden",
+            "border border-border bg-surface/40 text-foreground/80",
+            "transition-all active:scale-95 touch-manipulation",
+            "hover:text-accent hover:border-accent/40",
+          )}
+        >
+          <Menu className="h-5 w-5" />
+        </button>
       </div>
+    </motion.header>
 
       <MobileMenu open={open} onClose={() => setOpen(false)} />
     </>
