@@ -154,7 +154,7 @@ export function BootSplash() {
             }}
           />
 
-          <div className="relative w-full max-w-2xl px-6 font-mono text-[10px] sm:text-xs">
+          <div className="relative w-[90vw] md:max-w-2xl px-4 font-mono text-[9px] sm:text-xs">
             {/* Progress bar (Fixed at top of container) */}
             <div className="mb-8 border-b border-violet-400/20 pb-4">
               <div className="flex items-center justify-between font-mono">
