@@ -5,7 +5,21 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { skillGroups, type SkillLevel, type Skill } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import { useSkillsReveal } from "@/lib/gsap-animations";
-import * as Icons from "lucide-react";
+import * as LucideIcons from "lucide-react";
+import {
+  SiSap,
+  SiDassaultsystemes,
+  SiJavascript,
+  SiHtml5,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiWordpress,
+  SiJson,
+  SiMqtt,
+  SiBlender,
+  SiAnthropic,
+  SiPerplexity
+} from "@icons-pack/react-simple-icons";
 
 const levels: SkillLevel[] = ["Senior", "Working", "Familiar", "Exposure"];
 
@@ -35,9 +49,28 @@ function SignalBars({ level }: { level: SkillLevel }) {
   );
 }
 
+const skillToSimpleIcon: Record<string, any> = {
+  "SAPUI5": SiSap,
+  "SAP MII": SiSap,
+  "SAP PCo": SiSap,
+  "SAP HANA": SiSap,
+  "ABAP": SiSap,
+  "DELMIA Apriso": SiDassaultsystemes,
+  "JavaScript ES6": SiJavascript,
+  "HTML / CSS": SiHtml5,
+  "React / Next.js": SiNextdotjs,
+  "Tailwind CSS": SiTailwindcss,
+  "WordPress": SiWordpress,
+  "REST / JSON APIs": SiJson,
+  "MQTT": SiMqtt,
+  "Blender": SiBlender,
+  "Anthropic API": SiAnthropic,
+  "Perplexity API": SiPerplexity,
+};
+
 function SkillChip({ skill }: { skill: Skill }) {
-  // Dynamically get the icon component
-  const IconComponent = (Icons as any)[skill.icon] || Icons.Code;
+  // Use SimpleIcon if mapped, otherwise fallback to Lucide from site-data
+  const IconComponent = skillToSimpleIcon[skill.name] || (LucideIcons as any)[skill.icon] || LucideIcons.Code;
 
   return (
     <div
@@ -98,6 +131,16 @@ export function SkillsSection() {
         description="Il mio intero ecosistema tecnologico mappato su un'unica motherboard. Dai componenti core in fabbrica (MES) ai co-processori cloud e AI."
       />
 
+      {/* Legend */}
+      <div className="mt-10 flex flex-wrap gap-4 sm:gap-6 font-mono text-[10px] sm:text-xs">
+        {levels.map((lvl) => (
+          <div key={lvl} className="flex items-center gap-2">
+            <SignalBars level={lvl} />
+            <span className="text-muted/80 uppercase tracking-widest">{lvl}</span>
+          </div>
+        ))}
+      </div>
+
       {/* Unified Motherboard Container */}
       <div className="relative mt-12 overflow-hidden rounded-3xl border-2 border-border/60 bg-[#0a0a0c] p-4 sm:p-8 md:p-12 shadow-2xl">
         {/* Background circuit grid */}
@@ -112,10 +155,7 @@ export function SkillsSection() {
         <div className="relative z-10 flex flex-col gap-8 sm:gap-12">
           {skillGroups.map((group) => (
             <div key={group.id} className="relative">
-              {/* Printed Zone Border */}
-              <div className="absolute inset-0 border-2 border-dashed border-accent/10 rounded-xl pointer-events-none" />
-              
-              <div className="p-4 sm:p-6">
+              <div className="p-2 sm:p-4">
                 {/* Zone Label */}
                 <div className="flex items-center gap-3 mb-6">
                   <div className="h-[2px] w-8 bg-accent/40" />
