@@ -2,7 +2,6 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import { useInterstellar } from "@/components/providers/interstellar-provider";
-import { Slider } from "@/components/ui/slider"; // Assuming a slider exists, or I'll build a simple one
 import { useState } from "react";
 import { X } from "lucide-react";
 
