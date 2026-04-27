@@ -2,6 +2,7 @@ import { ArrowUpRight, Camera } from "lucide-react";
 import Link from "next/link";
 import { TerminalLink } from "@/components/terminal/terminal-link";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { GravityWrapper } from "@/components/motion/gravity-wrapper";
 
 const placeholders = Array.from({ length: 6 }, (_, i) => i);
 
@@ -19,8 +20,8 @@ export function PhotographySection() {
 
       <div className="mt-14 grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3">
         {placeholders.map((i) => (
+          <GravityWrapper key={i} intensity={0.8 + Math.random() * 0.5}>
           <div
-            key={i}
             className="group relative aspect-[4/5] overflow-hidden rounded-xl border border-border bg-surface"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-accent-hi/5" />
@@ -32,6 +33,7 @@ export function PhotographySection() {
               IMG_{String(i + 1).padStart(3, "0")}
             </span>
           </div>
+          </GravityWrapper>
         ))}
       </div>
 

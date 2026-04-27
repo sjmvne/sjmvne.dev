@@ -3,9 +3,13 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { InterstellarProvider } from "@/components/providers/interstellar-provider";
 import { TerminalOverlay } from "@/components/terminal/terminal-overlay";
 import { BootSplash } from "@/components/terminal/boot-splash";
 import { TerminalTransitionProvider } from "@/components/terminal/terminal-transition";
+import { GargantuaBackground } from "@/components/interstellar/gargantua-bg";
+import { TarsOverlay } from "@/components/interstellar/tars-overlay";
+import { InterstellarBodyClass } from "@/components/interstellar/interstellar-body-class";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -118,13 +122,18 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground bg-blueprint grain-overlay">
         <ThemeProvider>
-          <TerminalTransitionProvider>
-            {children}
-            <Analytics />
-            <SpeedInsights />
-            <TerminalOverlay />
-            <BootSplash />
-          </TerminalTransitionProvider>
+          <InterstellarProvider>
+            <TerminalTransitionProvider>
+              {children}
+              <Analytics />
+              <SpeedInsights />
+              <TerminalOverlay />
+              <GargantuaBackground />
+              <TarsOverlay />
+              <InterstellarBodyClass />
+              <BootSplash />
+            </TerminalTransitionProvider>
+          </InterstellarProvider>
         </ThemeProvider>
       </body>
     </html>

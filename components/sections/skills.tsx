@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { skillGroups, type SkillLevel, type Skill } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import { useSkillsReveal } from "@/lib/gsap-animations";
+import { GravityWrapper } from "@/components/motion/gravity-wrapper";
 import * as LucideIcons from "lucide-react";
 import {
   SiSap,
@@ -111,8 +112,9 @@ function SkillChip({ skill }: { skill: Skill }) {
   const IconComponent = skillToSimpleIcon[skill.name] || (LucideIcons as any)[skill.icon] || LucideIcons.Code;
 
   return (
-    <div
-      className={cn(
+    <GravityWrapper>
+      <div
+        className={cn(
         "group relative flex aspect-square flex-col items-center justify-center gap-2 rounded-[5px]",
         "border border-border/80 bg-surface p-2 text-center shadow-sm transition-all duration-300",
         "hover:-translate-y-0.5 hover:border-accent/60 hover:shadow-[0_4px_16px_rgba(139,92,246,0.15)]",
@@ -139,6 +141,7 @@ function SkillChip({ skill }: { skill: Skill }) {
         <SignalBars level={skill.level} />
       </div>
     </div>
+    </GravityWrapper>
   );
 }
 
@@ -166,6 +169,10 @@ export function SkillsSection() {
           </span>
         </div>
         <div className="flex flex-wrap justify-center gap-6">
+          {/* ... - .- -.-- */}
+          <div className="absolute right-4 bottom-2 opacity-10 font-mono text-[8px] tracking-[0.3em] pointer-events-none">
+            ... - .- -.--
+          </div>
           <div className="flex items-center gap-3">
             <SignalBars level="Mastery" />
             <span className="font-mono text-[10px] uppercase tracking-tighter text-foreground/70">

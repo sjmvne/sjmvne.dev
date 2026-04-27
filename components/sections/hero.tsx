@@ -12,8 +12,10 @@ import { hero, site } from "@/lib/site-data";
 import { Hero3DBackground } from "../motion/hero-3d";
 import { HeroParticles } from "../motion/hero-particles";
 import { useHeroTextReveal } from "@/lib/gsap-animations";
+import { useInterstellar } from "@/components/providers/interstellar-provider";
 
 export function HeroSection() {
+  const { isInterstellarMode, humorLevel, honestyLevel } = useInterstellar();
   const ref = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
   const [now, setNow] = useState("");
@@ -98,7 +100,13 @@ export function HeroSection() {
         <p
           className="hero-reveal max-w-2xl text-balance text-base text-muted sm:text-lg md:text-xl"
         >
-          {hero.tagline}
+          {isInterstellarMode && humorLevel > 80 ? (
+            "Spostando bit e spostando macchinari. Fondamentalmente un mago del MES, ma senza il cappello e con molta più caffeina. E sì, TARS mi sta guardando."
+          ) : isInterstellarMode && honestyLevel < 50 ? (
+            "Probabilmente il miglior developer che tu possa trovare in questo specifico file. Forse. Non chiedermi troppe conferme."
+          ) : (
+            hero.tagline
+          )}
         </p>
 
         <div
@@ -117,6 +125,12 @@ export function HeroSection() {
           >
             {site.email}
           </a>
+        </div>
+
+        <div
+          className="hero-reveal flex items-center gap-2 pt-4 font-mono text-[10px] text-muted/60 uppercase tracking-widest"
+        >
+          <span>C'è un messaggio tra le stelle. Trova gli indizi cinematici e usa il terminale.</span>
         </div>
 
         <div

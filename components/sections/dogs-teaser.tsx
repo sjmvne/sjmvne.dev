@@ -3,6 +3,7 @@ import Link from "next/link";
 import { TerminalLink } from "@/components/terminal/terminal-link";
 import { Reveal } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { GravityWrapper } from "@/components/motion/gravity-wrapper";
 import { dogs } from "@/lib/site-data";
 
 export function DogsTeaserSection() {
@@ -21,8 +22,8 @@ export function DogsTeaserSection() {
 
       <div className="mt-12 grid gap-4 sm:grid-cols-2">
         {dogs.map((d, idx) => (
+          <GravityWrapper key={d.name} intensity={1.3}>
           <Reveal
-            key={d.name}
             delay={idx * 0.1}
             className="group relative overflow-hidden rounded-2xl border border-border bg-surface/40 p-6"
           >
@@ -47,6 +48,7 @@ export function DogsTeaserSection() {
               {d.description}
             </p>
           </Reveal>
+          </GravityWrapper>
         ))}
       </div>
 

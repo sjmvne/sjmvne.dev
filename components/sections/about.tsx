@@ -6,6 +6,7 @@ import { CountUp } from "@/components/motion/count-up";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { about } from "@/lib/site-data";
 import { useAboutParallax } from "@/lib/gsap-animations";
+import { useInterstellar } from "@/components/providers/interstellar-provider";
 
 function parseStat(value: string) {
   const match = value.match(/^(\d+)(.*)$/);
@@ -14,6 +15,7 @@ function parseStat(value: string) {
 }
 
 export function AboutSection() {
+  const { isInterstellarMode, humorLevel, honestyLevel } = useInterstellar();
   const sectionRef = useRef<HTMLElement>(null);
   useAboutParallax(sectionRef);
 
@@ -28,7 +30,13 @@ export function AboutSection() {
           <SectionHeading
             eyebrow="01 · About"
             title={about.title}
-            description="Sto in mezzo al codice da qualche anno. Un po' per chi paga lo stipendio, un po' per cose che mi vengono in mente da solo."
+            description={
+              isInterstellarMode && honestyLevel > 90
+                ? "Scrivo codice per soldi e perché sono ossessionato dai dettagli. A volte il caffè è l'unica cosa che mi tiene in piedi."
+                : isInterstellarMode && humorLevel > 80
+                ? "Sono quella persona che debugga alle 3 di notte ridendo dei propri errori. Oppure piangendo. Dipende dal compilatore."
+                : "Sto in mezzo al codice da qualche anno. Un po' per chi paga lo stipendio, un po' per cose che mi vengono in mente da solo."
+            }
           />
           <div className="flex flex-col gap-5 text-base leading-relaxed text-foreground/90 sm:text-lg">
             {about.paragraphs.map((p, i) => (

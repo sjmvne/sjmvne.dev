@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { caseStudies } from "@/lib/site-data";
 import { useHorizontalProjects } from "@/lib/gsap-animations";
+import { GravityWrapper } from "@/components/motion/gravity-wrapper";
 import { cn } from "@/lib/utils";
 
 // Alternating offsets to break vertical symmetry — odd cards shift right
@@ -46,6 +47,7 @@ export function FeaturedProjectsSection() {
             key={p.slug}
             className={cn("project-card", CARD_OFFSETS[idx] ?? "ml-0")}
           >
+            <GravityWrapper intensity={1.5}>
             <TerminalLink
               href={`/projects/${p.slug}`}
               onMouseMove={handleMouseMove}
@@ -97,6 +99,7 @@ export function FeaturedProjectsSection() {
                 </div>
               </div>
             </TerminalLink>
+            </GravityWrapper>
           </li>
         ))}
       </ul>

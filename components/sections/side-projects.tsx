@@ -8,6 +8,7 @@ import { Reveal } from "@/components/motion/reveal";
 import { Badge } from "@/components/ui/badge";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { sideProjects, type ProjectStatus } from "@/lib/site-data";
+import { GravityWrapper } from "@/components/motion/gravity-wrapper";
 import { cn } from "@/lib/utils";
 
 const statusMeta: Record<
@@ -52,6 +53,7 @@ function SideProjectCard({
   const Icon = meta.icon;
 
   return (
+    <GravityWrapper intensity={1.2}>
     <Reveal as="li" key={p.slug} delay={idx * 0.07} y={20}>
       <TerminalLink
         href={`/projects/${p.slug}`}
@@ -106,6 +108,7 @@ function SideProjectCard({
           </div>
         </TerminalLink>
     </Reveal>
+    </GravityWrapper>
   );
 }
 

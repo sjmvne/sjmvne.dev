@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { interests } from "@/lib/site-data";
 import { useInterestExplosion } from "@/lib/gsap-animations";
+import { GravityWrapper } from "@/components/motion/gravity-wrapper";
 
 export function InterestsSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -23,9 +24,9 @@ export function InterestsSection() {
 
       <ul className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2">
         {interests.map((i, idx) => (
+          <GravityWrapper key={i.title} intensity={1.1}>
           <li
-            key={i.title}
-            className="interest-item flex flex-col gap-2 bg-background p-6 transition-colors hover:bg-surface/40"
+            className="interest-item flex flex-col gap-2 bg-background p-6 transition-colors hover:bg-surface/40 h-full"
           >
             <span className="font-mono text-xs text-accent">
               /{String(idx + 1).padStart(2, "0")}
@@ -35,6 +36,7 @@ export function InterestsSection() {
               {i.description}
             </p>
           </li>
+          </GravityWrapper>
         ))}
       </ul>
     </section>

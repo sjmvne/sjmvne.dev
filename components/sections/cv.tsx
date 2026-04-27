@@ -1,5 +1,5 @@
-import { Download, FileText } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { GravityWrapper } from "@/components/motion/gravity-wrapper";
 
 export function CvSection() {
   return (
@@ -14,6 +14,7 @@ export function CvSection() {
       />
 
       <div className="mt-12">
+        <GravityWrapper intensity={1.4}>
         <a
           href="/cv/CV_Simone_Pepe_2026.pdf"
           download
@@ -35,6 +36,7 @@ export function CvSection() {
           </div>
           <Download className="relative h-5 w-5 text-muted transition-all duration-300 group-hover:translate-y-0.5 group-hover:text-accent" />
         </a>
+        </GravityWrapper>
       </div>
     </section>
   );

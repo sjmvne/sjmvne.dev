@@ -726,7 +726,8 @@ export const travels: TravelCity[] = [
   { city: "Nazarè", country: "Portogallo", coords: [39.6012, -9.0704] },
   { city: "Cracovia", country: "Polonia", coords: [50.0647, 19.9450] },
   { city: "Malmo", country: "Svezia", coords: [55.6049, 13.0038] },
-  { city: "Palma di Maiorca", country: "Spagna", coords: [39.569055, 2.645000] }
+  { city: "Palma di Maiorca", country: "Spagna", coords: [39.569055, 2.645000] },
+  { city: "NASA Secret Base", country: "USA", coords: [33.8128, -117.9190], note: "S T A Y" }
 ];
 
 export const dogs = [

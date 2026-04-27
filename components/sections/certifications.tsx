@@ -2,6 +2,7 @@ import { Award, Clock } from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { certifications } from "@/lib/site-data";
+import { GravityWrapper } from "@/components/motion/gravity-wrapper";
 import { cn } from "@/lib/utils";
 
 export function CertificationsSection() {
@@ -23,9 +24,9 @@ export function CertificationsSection() {
           const earned = c.status === "earned";
           const Icon = earned ? Award : Clock;
           return (
+            <GravityWrapper key={c.title} intensity={1.2}>
             <Reveal
               as="li"
-              key={c.title}
               delay={idx * 0.08}
               y={16}
               className={cn(
@@ -60,6 +61,7 @@ export function CertificationsSection() {
                 </p>
               </div>
             </Reveal>
+            </GravityWrapper>
           );
         })}
       </ul>

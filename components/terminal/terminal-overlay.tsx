@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
+import { useInterstellar } from "@/components/providers/interstellar-provider";
 import { TerminalSquare, X } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -115,6 +116,9 @@ function runCommand(input: string, setTheme: (t: string) => void): Line[] {
       return [{ kind: "out", text: "__CLEAR__" }];
     case "exit":
       return [{ kind: "out", text: "__EXIT__" }];
+    case "interstellar":
+    case "stay":
+      return [{ kind: "out", text: "__INTERSTELLAR__" }];
     default:
       return [
         { kind: "err", text: `${c}: comando non trovato. Digita 'help'.` },
@@ -123,6 +127,7 @@ function runCommand(input: string, setTheme: (t: string) => void): Line[] {
 }
 
 export function TerminalOverlay() {
+  const { toggleInterstellar, isInterstellarMode } = useInterstellar();
   const [open, setOpen] = useState(false);
   const [lines, setLines] = useState<Line[]>(WELCOME);
   const [input, setInput] = useState("");
@@ -163,6 +168,21 @@ export function TerminalOverlay() {
       if (result.some((l) => l.text === "__EXIT__")) {
         setOpen(false);
         setInput("");
+        return;
+      }
+      if (result.some((l) => l.text === "__INTERSTELLAR__")) {
+        toggleInterstellar();
+        setLines((prev) => [
+          ...prev,
+          { kind: "in", text: value },
+          { kind: "out", text: !isInterstellarMode ? "Initializing gravity anomaly... STAND BY." : "Exiting anomaly... System stabilizing." },
+          { kind: "out", text: "" },
+        ]);
+        setInput("");
+        if (!isInterstellarMode) {
+           // Close terminal after a short delay to let the user see the message
+           setTimeout(() => setOpen(false), 1500);
+        }
         return;
       }
 

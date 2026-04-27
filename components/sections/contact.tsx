@@ -10,6 +10,7 @@ import {
 import { SectionHeading } from "@/components/ui/section-heading";
 import { site } from "@/lib/site-data";
 import { useSignalPulse } from "@/lib/gsap-animations";
+import { GravityWrapper } from "@/components/motion/gravity-wrapper";
 
 const socials = [
   { Icon: LinkedinIcon, label: "LinkedIn", href: site.social.linkedin, handle: "in/simonepepe00" },
@@ -79,6 +80,7 @@ export function ContactSection() {
         <ul className="grid flex-1 gap-3 sm:grid-cols-2">
           {socials.map(({ Icon, label, href, handle }) => (
             <li key={label}>
+              <GravityWrapper intensity={1.2}>
               <a
                 href={href}
                 target={href.startsWith("http") ? "_blank" : undefined}
@@ -97,15 +99,18 @@ export function ContactSection() {
                   </span>
                 </div>
               </a>
+              </GravityWrapper>
             </li>
           ))}
         </ul>
       </div>
 
+      <GravityWrapper intensity={0.5}>
       <footer className="container-page relative z-10 mt-20 flex flex-col items-start justify-between gap-3 border-t border-border/40 pt-8 font-mono text-xs text-muted sm:flex-row sm:items-center">
         <span>© 2026 Simone Pepe · sjmvne.dev</span>
         <span>Built with Next.js · deployed on Vercel</span>
       </footer>
+      </GravityWrapper>
     </section>
   );
 }

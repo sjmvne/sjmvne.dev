@@ -298,3 +298,13 @@
 .mobile-menu-open .mobile-menu-open\:hidden {
   display: none !important;
 }
+
+.interstellar-mode {
+  --background: transparent !important;
+  background-color: transparent !important;
+}
+
+.interstellar-mode .bg-blueprint::before,
+.interstellar-mode .bg-dotgrid {
+  opacity: 0.1 !important;
+}
