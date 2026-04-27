@@ -130,7 +130,7 @@ export function HeroSection() {
         <div
           className="hero-reveal flex items-center gap-2 pt-4 font-mono text-[10px] text-muted/60 uppercase tracking-widest"
         >
-          <span>C'è un messaggio tra le stelle. Trova gli indizi cinematici e usa il terminale.</span>
+          <span>C'è un messaggio tra le stelle. Trova gli indizi e usa il terminale.</span>
         </div>
 
         <div
