@@ -1,88 +1,88 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { skillGroups, type Skill } from "@/lib/site-data";
+import { skillGroups, type SkillLevel, type Skill } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import { useSkillsReveal } from "@/lib/gsap-animations";
 import * as Icons from "lucide-react";
 
-// For mobile scroll detection
-function useInCenter(ref: React.RefObject<Element | null>) {
-  const [inCenter, setInCenter] = useState(false);
+const levels: SkillLevel[] = ["Senior", "Working", "Familiar", "Exposure"];
 
-  useEffect(() => {
-    if (!ref.current) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setInCenter(entry.isIntersecting);
-      },
-      {
-        // trigger when the element is within the middle 20% of the viewport height
-        rootMargin: "-40% 0px -40% 0px",
-        threshold: 0,
-      }
-    );
-    observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [ref]);
+// Bar widths per level for the "signal strength" indicator
+const levelBar: Record<SkillLevel, number> = {
+  Senior: 3,
+  Working: 2,
+  Familiar: 1,
+  Exposure: 0,
+};
 
-  return inCenter;
+function SignalBars({ level }: { level: SkillLevel }) {
+  const filled = levelBar[level];
+  return (
+    <span className="flex items-end gap-[3px]" aria-label={level}>
+      {[1, 2, 3].map((i) => (
+        <span
+          key={i}
+          className={cn(
+            "w-[3px] rounded-[1px] transition-colors duration-300",
+            i <= filled ? "bg-accent shadow-[0_0_8px_rgba(139,92,246,0.6)]" : "bg-muted opacity-30",
+          )}
+          style={{ height: `${5 + i * 3}px` }}
+        />
+      ))}
+    </span>
+  );
 }
 
-function SkillNode({ skill }: { skill: Skill }) {
-  const nodeRef = useRef<HTMLDivElement>(null);
-  const inCenter = useInCenter(nodeRef);
-  
+function SkillChip({ skill }: { skill: Skill }) {
   // Dynamically get the icon component
   const IconComponent = (Icons as any)[skill.icon] || Icons.Code;
 
-  // The skill's level defines the "pin" color
-  const pinColor = 
-    skill.level === "Senior" ? "bg-accent shadow-[0_0_8px_rgba(139,92,246,0.8)]" :
-    skill.level === "Working" ? "bg-foreground/50" :
-    "bg-muted/30";
-
   return (
     <div
-      ref={nodeRef}
       className={cn(
-        "group relative flex aspect-square items-center justify-center rounded-xl",
-        "border border-border/60 bg-surface/80 backdrop-blur-sm transition-all duration-300",
-        "hover:border-accent/40 hover:bg-accent-soft/30 hover:shadow-lg hover:-translate-y-1 hover:z-10",
-        // Force hover state on mobile when in center
-        inCenter && "max-md:border-accent/40 max-md:bg-accent-soft/30 max-md:shadow-lg max-md:-translate-y-1 max-md:z-10"
+        "group relative flex flex-col justify-between p-3 rounded-[5px]",
+        "border border-border/80 bg-surface/90 backdrop-blur-md transition-all duration-300",
+        "hover:border-accent/60 hover:bg-surface hover:shadow-[0_4px_16px_rgba(139,92,246,0.15)] hover:-translate-y-0.5",
       )}
     >
-      {/* Circuit Pins */}
-      <div className={cn("absolute -left-1 top-2 h-1.5 w-1.5 rounded-full transition-colors", pinColor)} />
-      <div className={cn("absolute -right-1 bottom-2 h-1.5 w-1.5 rounded-full transition-colors", pinColor)} />
+      {/* Top section: Icon and SignalBars */}
+      <div className="flex items-start justify-between w-full mb-3">
+        <div className="p-1.5 rounded bg-background/50 border border-border/50 text-muted group-hover:text-accent group-hover:border-accent/30 transition-colors">
+          <IconComponent className="h-4 w-4" />
+        </div>
+        <SignalBars level={skill.level} />
+      </div>
 
-      <IconComponent className={cn(
-        "h-6 w-6 text-muted transition-colors duration-300",
-        "group-hover:text-accent",
-        inCenter && "max-md:text-accent"
-      )} />
-
-      {/* Label Tooltip */}
-      <div
-        className={cn(
-          "pointer-events-none absolute -bottom-10 left-1/2 -translate-x-1/2 rounded-md border border-border/80 bg-background/95 px-2.5 py-1 text-center font-mono text-[10px] whitespace-nowrap shadow-xl backdrop-blur-md",
-          "opacity-0 transition-all duration-300 translate-y-2 z-20",
-          "group-hover:opacity-100 group-hover:translate-y-0",
-          inCenter && "max-md:opacity-100 max-md:translate-y-0"
+      {/* Bottom section: Text */}
+      <div className="mt-auto">
+        <h4 className="font-mono text-xs sm:text-[13px] font-semibold text-foreground/90 tracking-tight line-clamp-1">
+          {skill.name.toUpperCase()}
+        </h4>
+        {skill.note && (
+          <p className="font-mono text-[9px] text-muted/60 mt-0.5 truncate">
+            {skill.note.toUpperCase()}
+          </p>
         )}
-      >
-        <span className="block font-medium text-foreground">{skill.name}</span>
-        <span className="block text-[9px] text-muted">{skill.level}</span>
+      </div>
+
+      {/* Chip Pins (Visual detail) */}
+      <div className="absolute -left-1 top-1/2 -translate-y-1/2 flex flex-col gap-1">
+        <div className="w-1 h-1.5 bg-border rounded-r-sm" />
+        <div className="w-1 h-1.5 bg-border rounded-r-sm" />
+        <div className="w-1 h-1.5 bg-border rounded-r-sm" />
+      </div>
+      <div className="absolute -right-1 top-1/2 -translate-y-1/2 flex flex-col gap-1">
+        <div className="w-1 h-1.5 bg-border rounded-l-sm" />
+        <div className="w-1 h-1.5 bg-border rounded-l-sm" />
+        <div className="w-1 h-1.5 bg-border rounded-l-sm" />
       </div>
     </div>
   );
 }
 
 export function SkillsSection() {
-  const [activeId, setActiveId] = useState(skillGroups[0].id);
-  const group = skillGroups.find((g) => g.id === activeId) ?? skillGroups[0];
   const sectionRef = useRef<HTMLElement>(null);
   useSkillsReveal(sectionRef);
 
@@ -94,69 +94,46 @@ export function SkillsSection() {
     >
       <SectionHeading
         eyebrow="03 · Skills"
-        title="Hardware logic, digital execution."
-        description="Niente superlativi. Solo gli strumenti che compongono il mio circuito operativo quotidiano, dalla fabbrica al cloud."
+        title="Logic Board."
+        description="Il mio intero ecosistema tecnologico mappato su un'unica motherboard. Dai componenti core in fabbrica (MES) ai co-processori cloud e AI."
       />
 
-      {/* Category tabs - "Breadboard" style */}
-      <nav className="mt-10 flex flex-wrap gap-2" aria-label="Categorie skill">
-        {skillGroups.map((g) => {
-          const active = g.id === activeId;
-          return (
-            <button
-              key={g.id}
-              type="button"
-              onClick={() => setActiveId(g.id)}
-              aria-pressed={active}
-              className={cn(
-                "relative touch-manipulation rounded-full border px-4 py-2 text-sm font-medium",
-                "transition-all duration-200 active:scale-[0.97]",
-                active
-                  ? "border-accent/40 bg-accent-soft text-accent shadow-sm"
-                  : "border-border bg-surface/40 text-muted hover:border-accent/30 hover:bg-accent-soft/40 hover:text-foreground",
-              )}
-            >
-              {g.label}
-              <span
-                className={cn(
-                  "ml-2 inline-flex items-center justify-center rounded-full px-1.5 py-0.5 font-mono text-[10px] transition-colors tabular-nums",
-                  active
-                    ? "bg-accent/20 text-accent"
-                    : "bg-border/60 text-muted",
-                )}
-              >
-                {g.skills.length}
-              </span>
-            </button>
-          );
-        })}
-      </nav>
-
-      {/* Technical Schematic Area */}
-      <div className="relative mt-12 overflow-hidden rounded-3xl border border-border/50 bg-background/50 p-6 sm:p-12">
+      {/* Unified Motherboard Container */}
+      <div className="relative mt-12 overflow-hidden rounded-3xl border-2 border-border/60 bg-[#0a0a0c] p-4 sm:p-8 md:p-12 shadow-2xl">
         {/* Background circuit grid */}
-        <div className="circuit-grid absolute inset-0 opacity-40 mix-blend-screen" />
+        <div className="circuit-grid absolute inset-0 opacity-100" />
         
         {/* Animated pulses */}
-        <div className="absolute left-[20%] top-0 w-px h-32 bg-gradient-to-b from-transparent via-accent to-transparent data-pulse-y opacity-0" />
-        <div className="absolute left-[60%] top-0 w-px h-64 bg-gradient-to-b from-transparent via-accent to-transparent data-pulse-y opacity-0" style={{ animationDelay: '1.5s' }} />
-        <div className="absolute left-0 top-[30%] h-px w-64 bg-gradient-to-r from-transparent via-accent to-transparent data-pulse-x opacity-0" style={{ animationDelay: '0.5s' }} />
+        <div className="absolute left-[20%] top-0 w-[2px] h-32 bg-gradient-to-b from-transparent via-accent to-transparent data-pulse-y opacity-0 z-0" />
+        <div className="absolute left-[60%] top-0 w-[2px] h-64 bg-gradient-to-b from-transparent via-accent to-transparent data-pulse-y opacity-0 z-0" style={{ animationDelay: '1.5s' }} />
+        <div className="absolute left-0 top-[40%] h-[2px] w-64 bg-gradient-to-r from-transparent via-accent to-transparent data-pulse-x opacity-0 z-0" style={{ animationDelay: '0.5s' }} />
+        <div className="absolute left-0 top-[70%] h-[2px] w-96 bg-gradient-to-r from-transparent via-accent to-transparent data-pulse-x opacity-0 z-0" style={{ animationDelay: '2.5s' }} />
 
-        <div className="relative z-10 flex flex-col gap-6">
-          <div className="flex flex-col gap-1">
-            <h3 className="text-xl font-semibold tracking-tighter text-foreground/90">
-              {group.label} Cluster
-            </h3>
-            <p className="text-sm font-mono text-muted/70">
-              [{group.skills.length} nodi attivi]
-            </p>
-          </div>
+        <div className="relative z-10 flex flex-col gap-8 sm:gap-12">
+          {skillGroups.map((group) => (
+            <div key={group.id} className="relative">
+              {/* Printed Zone Border */}
+              <div className="absolute inset-0 border-2 border-dashed border-accent/10 rounded-xl pointer-events-none" />
+              
+              <div className="p-4 sm:p-6">
+                {/* Zone Label */}
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="h-[2px] w-8 bg-accent/40" />
+                  <h3 className="font-mono text-sm sm:text-base text-accent tracking-widest uppercase">
+                    [ ZONE: {group.id} ]
+                  </h3>
+                  <div className="h-[2px] flex-grow bg-accent/10" />
+                </div>
 
-          <div className="grid grid-cols-4 gap-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10">
-            {group.skills.map((skill) => (
-              <SkillNode key={skill.name} skill={skill} />
-            ))}
-          </div>
+                {/* Chips Grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
+                  {group.skills.map((skill) => (
+                    <SkillChip key={skill.name} skill={skill} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

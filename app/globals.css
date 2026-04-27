@@ -263,3 +263,34 @@
     transform: none !important;
   }
 }
+@layer utilities {
+  .circuit-grid {
+    background-image: 
+      linear-gradient(to right, rgba(139, 92, 246, 0.15) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(139, 92, 246, 0.15) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: center;
+  }
+
+  @keyframes dataPulseX {
+    0% { left: -200px; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+  }
+
+  @keyframes dataPulseY {
+    0% { top: -200px; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+  }
+
+  .data-pulse-x {
+    animation: dataPulseX 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  .data-pulse-y {
+    animation: dataPulseY 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+}
