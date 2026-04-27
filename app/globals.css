@@ -294,3 +294,7 @@
     animation: dataPulseY 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
 }
+
+.mobile-menu-open .mobile-menu-open\:hidden {
+  display: none !important;
+}

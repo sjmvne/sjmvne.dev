@@ -53,19 +53,19 @@ const skillToSimpleIcon: Record<string, any> = {
   "SAPUI5": SiSap,
   "SAP MII": SiSap,
   "SAP PCo": SiSap,
-  "SAP HANA": SiSap,
   "ABAP": SiSap,
-  "DELMIA Apriso": SiDassaultsystemes,
-  "JavaScript ES6": SiJavascript,
-  "HTML / CSS": SiHtml5,
-  "React / Next.js": SiNextdotjs,
-  "Tailwind CSS": SiTailwindcss,
+  "Apriso": SiDassaultsystemes,
+  "JS ES6": SiJavascript,
+  "HTML/CSS": SiHtml5,
+  "React/Next": SiNextdotjs,
+  "Tailwind": SiTailwindcss,
   "WordPress": SiWordpress,
-  "REST / JSON APIs": SiJson,
+  "REST APIs": SiJson,
   "MQTT": SiMqtt,
   "Blender": SiBlender,
-  "Anthropic API": SiAnthropic,
-  "Perplexity API": SiPerplexity,
+  "Anthropic": SiAnthropic,
+  "Perplexity": SiPerplexity,
+  "Claude Code": SiNextdotjs, // Temporary or more specific icon if available
 };
 
 function SkillChip({ skill }: { skill: Skill }) {
@@ -76,40 +76,16 @@ function SkillChip({ skill }: { skill: Skill }) {
     <div
       className={cn(
         "group relative flex flex-col justify-between p-3 rounded-[5px]",
-        "border border-border/80 bg-surface/90 backdrop-blur-md transition-all duration-300",
-        "hover:border-accent/60 hover:bg-surface hover:shadow-[0_4px_16px_rgba(139,92,246,0.15)] hover:-translate-y-0.5",
+        "skill-item group relative flex aspect-square flex-col items-center justify-center gap-2 overflow-hidden rounded-[5px] border border-accent/10 bg-surface/30 p-2 text-center transition-all duration-300 hover:border-accent/40 hover:bg-accent-soft/20",
       )}
     >
-      {/* Top section: Icon and SignalBars */}
-      <div className="flex items-start justify-between w-full mb-3">
-        <div className="p-1.5 rounded bg-background/50 border border-border/50 text-muted group-hover:text-accent group-hover:border-accent/30 transition-colors">
-          <IconComponent className="h-4 w-4" />
-        </div>
+      <IconComponent className="h-5 w-5 text-muted transition-colors group-hover:text-accent sm:h-6 sm:w-6" />
+      <span className="line-clamp-2 px-1 font-mono text-[10px] leading-tight text-foreground/80 sm:text-[11px]">
+        {skill.name}
+      </span>
+
+      <div className="absolute right-1 top-1">
         <SignalBars level={skill.level} />
-      </div>
-
-      {/* Bottom section: Text */}
-      <div className="mt-auto">
-        <h4 className="font-mono text-xs sm:text-[13px] font-semibold text-foreground/90 tracking-tight line-clamp-1">
-          {skill.name.toUpperCase()}
-        </h4>
-        {skill.note && (
-          <p className="font-mono text-[9px] text-muted/60 mt-0.5 truncate">
-            {skill.note.toUpperCase()}
-          </p>
-        )}
-      </div>
-
-      {/* Chip Pins (Visual detail) */}
-      <div className="absolute -left-1 top-1/2 -translate-y-1/2 flex flex-col gap-1">
-        <div className="w-1 h-1.5 bg-border rounded-r-sm" />
-        <div className="w-1 h-1.5 bg-border rounded-r-sm" />
-        <div className="w-1 h-1.5 bg-border rounded-r-sm" />
-      </div>
-      <div className="absolute -right-1 top-1/2 -translate-y-1/2 flex flex-col gap-1">
-        <div className="w-1 h-1.5 bg-border rounded-l-sm" />
-        <div className="w-1 h-1.5 bg-border rounded-l-sm" />
-        <div className="w-1 h-1.5 bg-border rounded-l-sm" />
       </div>
     </div>
   );
@@ -131,15 +107,6 @@ export function SkillsSection() {
         description="Il mio intero ecosistema tecnologico mappato su un'unica motherboard. Dai componenti core in fabbrica (MES) ai co-processori cloud e AI."
       />
 
-      {/* Legend */}
-      <div className="mt-10 flex flex-wrap gap-4 sm:gap-6 font-mono text-[10px] sm:text-xs">
-        {levels.map((lvl) => (
-          <div key={lvl} className="flex items-center gap-2">
-            <SignalBars level={lvl} />
-            <span className="text-muted/80 uppercase tracking-widest">{lvl}</span>
-          </div>
-        ))}
-      </div>
 
       {/* Unified Motherboard Container */}
       <div className="relative mt-12 overflow-hidden rounded-3xl border-2 border-border/60 bg-[#0a0a0c] p-4 sm:p-8 md:p-12 shadow-2xl">
@@ -157,16 +124,16 @@ export function SkillsSection() {
             <div key={group.id} className="relative">
               <div className="p-2 sm:p-4">
                 {/* Zone Label */}
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="h-[2px] w-8 bg-accent/40" />
-                  <h3 className="font-mono text-sm sm:text-base text-accent tracking-widest uppercase">
-                    [ ZONE: {group.id} ]
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="h-[1px] w-6 bg-accent/30" />
+                  <h3 className="font-mono text-[10px] text-accent tracking-[0.2em] uppercase">
+                    [ AREA: {group.label} ]
                   </h3>
-                  <div className="h-[2px] flex-grow bg-accent/10" />
+                  <div className="h-[1px] flex-grow bg-accent/10" />
                 </div>
 
                 {/* Chips Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
+                <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
                   {group.skills.map((skill) => (
                     <SkillChip key={skill.name} skill={skill} />
                   ))}
@@ -174,6 +141,41 @@ export function SkillsSection() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Signal Legend */}
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 rounded-xl border border-accent/10 bg-surface/30 p-4 sm:p-6">
+          <div className="flex w-full items-center justify-center gap-2 mb-2 sm:w-auto sm:mb-0">
+            <span className="font-mono text-[10px] uppercase tracking-widest text-muted">
+              Potenza Segnale:
+            </span>
+          </div>
+          <div className="flex flex-wrap justify-center gap-6">
+            <div className="flex items-center gap-3">
+              <SignalBars level="Senior" />
+              <span className="font-mono text-[10px] uppercase tracking-tighter text-foreground/70">
+                Senior
+              </span>
+            </div>
+            <div className="flex items-center gap-3">
+              <SignalBars level="Working" />
+              <span className="font-mono text-[10px] uppercase tracking-tighter text-foreground/70">
+                Working
+              </span>
+            </div>
+            <div className="flex items-center gap-3">
+              <SignalBars level="Familiar" />
+              <span className="font-mono text-[10px] uppercase tracking-tighter text-foreground/70">
+                Familiar
+              </span>
+            </div>
+            <div className="flex items-center gap-3">
+              <SignalBars level="Exposure" />
+              <span className="font-mono text-[10px] uppercase tracking-tighter text-foreground/70">
+                Exposure
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </section>

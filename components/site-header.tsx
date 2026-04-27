@@ -41,6 +41,14 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (open) {
+      document.documentElement.classList.add("mobile-menu-open");
+    } else {
+      document.documentElement.classList.remove("mobile-menu-open");
+    }
+  }, [open]);
+
   return (
     <>
       <header

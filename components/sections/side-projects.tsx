@@ -9,7 +9,6 @@ import { Badge } from "@/components/ui/badge";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { sideProjects, type ProjectStatus } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
-import { useMagneticCard } from "@/lib/gsap-animations";
 
 const statusMeta: Record<
   ProjectStatus,
@@ -42,7 +41,7 @@ const statusMeta: Record<
   },
 };
 
-function MagneticCard({
+function SideProjectCard({
   p,
   idx,
 }: {
@@ -51,18 +50,13 @@ function MagneticCard({
 }) {
   const meta = statusMeta[p.status ?? "in-progress"];
   const Icon = meta.icon;
-  const cardRef = useMagneticCard(0.2);
 
   return (
     <Reveal as="li" key={p.slug} delay={idx * 0.07} y={20}>
-      <div
-        ref={cardRef}
-        style={{ perspective: 800, transformStyle: "preserve-3d" }}
+      <TerminalLink
+        href={`/projects/${p.slug}`}
+        className="group relative flex h-full touch-manipulation flex-col gap-5 overflow-hidden rounded-2xl glass-card p-6 transition-all duration-300 hover:border-accent/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-accent/5 active:scale-[0.98]"
       >
-        <TerminalLink
-          href={`/projects/${p.slug}`}
-          className="group relative flex h-full touch-manipulation flex-col gap-5 overflow-hidden rounded-2xl glass-card p-6 transition-colors duration-300 hover:border-accent/40 active:border-accent/40"
-        >
           <div
             aria-hidden
             className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 accent-glow opacity-0 transition-opacity duration-500 group-hover:opacity-60"
@@ -111,7 +105,6 @@ function MagneticCard({
             )}
           </div>
         </TerminalLink>
-      </div>
     </Reveal>
   );
 }
@@ -132,7 +125,7 @@ export function SideProjectsSection() {
 
       <ul className="mt-14 grid gap-4 md:grid-cols-2">
         {sideProjects.map((p, idx) => (
-          <MagneticCard key={p.slug} p={p} idx={idx} />
+          <SideProjectCard key={p.slug} p={p} idx={idx} />
         ))}
       </ul>
     </section>

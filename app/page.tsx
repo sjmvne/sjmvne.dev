@@ -9,7 +9,6 @@ import { InterestsSection } from "@/components/sections/interests";
 import { PhotographySection } from "@/components/sections/photography";
 import { SideProjectsSection } from "@/components/sections/side-projects";
 import { SkillsSection } from "@/components/sections/skills";
-import { StackSection } from "@/components/sections/stack";
 import { TimelineSection } from "@/components/sections/timeline";
 import { TravelsSection } from "@/components/sections/travels";
 import { SiteHeader } from "@/components/site-header";
@@ -26,7 +25,6 @@ export default function Home() {
         <FeaturedProjectsSection />
         <SideProjectsSection />
         <CertificationsSection />
-        <StackSection />
         <TravelsSection />
         <DogsTeaserSection />
         <PhotographySection />

@@ -26,9 +26,8 @@ const nav: NavItem[] = [
   { href: "/#about", label: "About", icon: User },
   { href: "/#timeline", label: "Percorso", icon: Sparkles },
   { href: "/#skills", label: "Skills", icon: Wrench },
-  { href: "/#projects", label: "Featured", icon: Briefcase },
-  { href: "/#side-projects", label: "Side projects", icon: Terminal },
-  { href: "/#stack", label: "Stack", icon: Wrench },
+  { href: "/#projects", label: "Progetti", icon: Briefcase },
+  { href: "/#side-projects", label: "Lab", icon: Terminal },
   { href: "/#travels", label: "Viaggi", icon: MapPin },
   { href: "/#dogs", label: "Whisky & Lady", icon: PawPrint },
   { href: "/#contact", label: "Contatti", icon: Mail },
@@ -63,7 +62,7 @@ export function MobileMenu({
           animate={{ opacity: 1, backdropFilter: "blur(28px)" }}
           exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-[10000] glass border-none md:hidden"
+          className="fixed inset-0 z-[10000] bg-background/40 backdrop-blur-3xl md:hidden"
           onClick={onClose}
           aria-modal="true"
           role="dialog"

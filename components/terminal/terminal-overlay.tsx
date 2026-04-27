@@ -213,7 +213,8 @@ export function TerminalOverlay() {
           "fixed bottom-4 right-4 z-40 flex items-center gap-2 rounded-full border border-border glass-card px-4 py-2.5 text-sm font-medium transition-all duration-300 hover:scale-105 hover:border-accent/50 active:scale-95",
           open
             ? "translate-y-16 opacity-0 pointer-events-none"
-            : "translate-y-0 opacity-100"
+            : "translate-y-0 opacity-100",
+          "mobile-menu-open:hidden" // Add a way to hide when mobile menu is open
         )}
       >
         <TerminalSquare className="h-4 w-4" />
@@ -298,7 +299,7 @@ export function TerminalOverlay() {
                     autoCapitalize="none"
                     autoCorrect="off"
                     spellCheck={false}
-                    className="flex-1 border-0 bg-transparent font-mono text-sm text-foreground outline-none placeholder:text-muted"
+                    className="flex-1 border-0 bg-transparent font-mono text-base text-foreground outline-none placeholder:text-muted md:text-sm"
                     placeholder="help"
                   />
                 </div>
