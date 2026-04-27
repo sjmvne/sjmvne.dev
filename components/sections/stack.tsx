@@ -1,3 +1,5 @@
+"use client";
+
 import {
   SiAnthropic,
   SiBlender,
@@ -29,6 +31,7 @@ import {
   type StackIconKey,
 } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
+import { useFloatingDrift } from "@/lib/gsap-animations";
 
 type IconComp = ComponentType<SVGProps<SVGSVGElement>>;
 
@@ -56,6 +59,37 @@ const iconMap: Record<Exclude<StackIconKey, null>, IconComp> = {
   mqtt: SiMqtt,
 };
 
+function FloatingItem({
+  item,
+  idx,
+}: {
+  item: { name: string; icon?: StackIconKey | null };
+  idx: number;
+}) {
+  const ref = useFloatingDrift(idx);
+  const Icon = item.icon ? iconMap[item.icon] : null;
+
+  return (
+    <li
+      ref={ref}
+      className={cn(
+        "group flex items-center gap-2.5 rounded-lg border border-transparent bg-transparent px-2.5 py-1.5 font-mono text-xs",
+        "text-foreground/90 transition-colors",
+        "hover:border-accent/30 hover:bg-accent-soft/50 hover:text-accent",
+      )}
+    >
+      {Icon ? (
+        <Icon className="h-4 w-4 shrink-0 text-muted transition-colors group-hover:text-accent" />
+      ) : (
+        <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border border-border bg-surface text-[9px] font-semibold uppercase text-muted transition-colors group-hover:border-accent/40 group-hover:bg-accent-soft group-hover:text-accent">
+          {item.name.charAt(0)}
+        </span>
+      )}
+      <span>{item.name}</span>
+    </li>
+  );
+}
+
 export function StackSection() {
   return (
     <section
@@ -71,10 +105,10 @@ export function StackSection() {
       </Reveal>
 
       <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
-        {stackCategories.map((cat, idx) => (
+        {stackCategories.map((cat, catIdx) => (
           <Reveal
             key={cat.id}
-            delay={idx * 0.05}
+            delay={catIdx * 0.05}
             y={16}
             className="flex flex-col gap-4 bg-background p-6 transition-colors hover:bg-surface/40"
           >
@@ -82,28 +116,13 @@ export function StackSection() {
               {cat.label}
             </h3>
             <ul className="flex flex-col gap-1.5">
-              {cat.items.map((item) => {
-                const Icon = item.icon ? iconMap[item.icon] : null;
-                return (
-                  <li
-                    key={item.name}
-                    className={cn(
-                      "group flex items-center gap-2.5 rounded-lg border border-transparent bg-transparent px-2.5 py-1.5 font-mono text-xs",
-                      "text-foreground/90 transition-all",
-                      "hover:border-accent/30 hover:bg-accent-soft/50 hover:text-accent",
-                    )}
-                  >
-                    {Icon ? (
-                      <Icon className="h-4 w-4 shrink-0 text-muted transition-colors group-hover:text-accent" />
-                    ) : (
-                      <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border border-border bg-surface text-[9px] font-semibold uppercase text-muted transition-colors group-hover:border-accent/40 group-hover:bg-accent-soft group-hover:text-accent">
-                        {item.name.charAt(0)}
-                      </span>
-                    )}
-                    <span>{item.name}</span>
-                  </li>
-                );
-              })}
+              {cat.items.map((item, itemIdx) => (
+                <FloatingItem
+                  key={item.name}
+                  item={item}
+                  idx={catIdx * 10 + itemIdx}
+                />
+              ))}
             </ul>
           </Reveal>
         ))}

@@ -1,20 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { levelTone, skillGroups, type SkillLevel } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
+import { useSkillsReveal } from "@/lib/gsap-animations";
 
 const levels: SkillLevel[] = ["Senior", "Working", "Familiar"];
 
 export function SkillsSection() {
   const [activeId, setActiveId] = useState(skillGroups[0].id);
   const group = skillGroups.find((g) => g.id === activeId) ?? skillGroups[0];
+  const sectionRef = useRef<HTMLElement>(null);
+  useSkillsReveal(sectionRef);
 
   return (
     <section
+      ref={sectionRef}
       id="skills"
-      className="container-page relative scroll-mt-24 py-24 sm:py-32"
+      className="container-page relative scroll-mt-24 overflow-hidden py-24 sm:py-32"
     >
       <SectionHeading
         eyebrow="03 · Skills"
@@ -85,7 +89,7 @@ export function SkillsSection() {
           {group.skills.map((skill) => (
             <li
               key={skill.name}
-              className="group flex items-start justify-between gap-3 rounded-xl border border-border bg-surface/40 p-4 transition-colors hover:border-accent/30 hover:bg-accent-soft/30"
+              className="skill-item group flex items-start justify-between gap-3 rounded-xl glass-card p-4 transition-all duration-300 hover:border-accent/40 hover:-translate-y-1 hover:scale-[1.02]"
             >
               <div className="flex min-w-0 flex-col gap-1">
                 <span className="font-medium">{skill.name}</span>

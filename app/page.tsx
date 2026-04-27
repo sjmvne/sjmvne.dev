@@ -13,7 +13,6 @@ import { StackSection } from "@/components/sections/stack";
 import { TimelineSection } from "@/components/sections/timeline";
 import { TravelsSection } from "@/components/sections/travels";
 import { SiteHeader } from "@/components/site-header";
-import { TerminalOverlay } from "@/components/terminal/terminal-overlay";
 
 export default function Home() {
   return (
@@ -35,7 +34,6 @@ export default function Home() {
         <CvSection />
         <ContactSection />
       </main>
-      <TerminalOverlay />
     </>
   );
 }

@@ -135,27 +135,6 @@ export function TerminalOverlay() {
   const close = useCallback(() => setOpen(false), []);
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      const target = e.target as HTMLElement | null;
-      const isTyping =
-        target instanceof HTMLInputElement ||
-        target instanceof HTMLTextAreaElement;
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
-        e.preventDefault();
-        setOpen((v) => !v);
-        return;
-      }
-      if (e.key === "Escape") setOpen(false);
-      if ((e.key === "`" || e.key === "~") && !isTyping && !open) {
-        e.preventDefault();
-        setOpen(true);
-      }
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [open]);
-
-  useEffect(() => {
     if (open) {
       setTimeout(() => inputRef.current?.focus(), 50);
     }
@@ -229,20 +208,16 @@ export function TerminalOverlay() {
     <>
       <button
         type="button"
-        onClick={() => setOpen(true)}
-        aria-label="Apri terminal"
+        onClick={() => setOpen((v) => !v)}
         className={cn(
-          "fixed bottom-4 right-4 z-40 inline-flex h-11 items-center gap-2 rounded-full",
-          "border border-border bg-surface/85 px-4 font-mono text-xs text-muted backdrop-blur-md",
-          "shadow-lg shadow-black/30 transition-all duration-300",
-          "hover:text-accent hover:border-accent/40 hover:bg-accent-soft",
+          "fixed bottom-4 right-4 z-40 flex items-center gap-2 rounded-full border border-border glass-card px-4 py-2.5 text-sm font-medium transition-all duration-300 hover:scale-105 hover:border-accent/50 active:scale-95",
+          open
+            ? "translate-y-16 opacity-0 pointer-events-none"
+            : "translate-y-0 opacity-100"
         )}
       >
         <TerminalSquare className="h-4 w-4" />
         <span className="hidden sm:inline">terminal</span>
-        <kbd className="hidden rounded border border-border bg-background px-1.5 py-0.5 text-[10px] sm:inline">
-          ⌘K
-        </kbd>
       </button>
 
       <AnimatePresence>
@@ -262,10 +237,10 @@ export function TerminalOverlay() {
               transition={{ type: "spring", damping: 22, stiffness: 240 }}
               onClick={(e) => e.stopPropagation()}
               className={cn(
-                "absolute inset-x-3 bottom-3 md:inset-x-auto md:left-1/2 md:bottom-10 md:-translate-x-1/2",
-                "h-[80vh] md:h-[480px] w-auto md:w-[760px] max-w-[calc(100vw-1.5rem)]",
+                "absolute inset-x-3 bottom-3 md:inset-x-auto md:right-4 md:bottom-20 md:translate-x-0",
+                "h-[80vh] md:h-[480px] w-auto md:w-[640px] max-w-[calc(100vw-1.5rem)]",
                 "flex flex-col overflow-hidden rounded-2xl border border-border",
-                "bg-background/95 shadow-2xl shadow-black/40 backdrop-blur-xl",
+                "glass-card shadow-2xl shadow-black/40",
               )}
             >
               <div className="flex items-center justify-between border-b border-border/80 px-4 py-2.5">

@@ -2,6 +2,7 @@
 
 import { Menu } from "lucide-react";
 import Link from "next/link";
+import { TerminalLink } from "@/components/terminal/terminal-link";
 import { useState } from "react";
 import { MobileMenu } from "@/components/mobile-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -20,14 +21,14 @@ export function SiteHeader() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-border/40 bg-background/70 backdrop-blur-xl">
+      <header className="fixed inset-x-0 top-0 z-50 glass border-x-0 border-t-0 rounded-none shadow-none">
         <div className="container-page flex h-14 items-center justify-between gap-4">
-          <Link
+          <TerminalLink
             href="/"
             className="font-mono text-sm tracking-tight text-foreground transition-colors hover:text-accent"
           >
             sjmvne<span className="text-accent">.dev</span>
-          </Link>
+          </TerminalLink>
 
           <nav className="hidden items-center gap-1 md:flex">
             {navLinks.map((link) => (

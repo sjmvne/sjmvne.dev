@@ -17,8 +17,8 @@ export const hero = {
   greeting: "Ciao, sono",
   name: "Simone",
   tagline:
-    "Sviluppo software — per lavoro e per hobby. Di giorno MES/ERP in Accenture, la sera progetti miei: siti, tool AI, app che mi servono.",
-  meta: "Milano · due cani · una fotocamera",
+    "Costruisco software per l'industria e tool per risolvere problemi quotidiani. Di giorno in Accenture tra sistemi MES e dashboard enterprise, la sera esploro AI, fotografia e tutto ciò che può essere automatizzato.",
+  meta: "Crafting digital experiences",
   statusLine: {
     label: "Attualmente su",
     value: "progetto MES aerospace",
@@ -28,9 +28,9 @@ export const hero = {
 export const about = {
   title: "Chi sono",
   paragraphs: [
-    "Ho cominciato con SAP ABAP in Altea. Poi sono passato a SAP MII e IoT industriale (Lamborghini, Luxottica, CIT). Dal 2023 sono in Accenture: prima due anni su una dashboard SAPUI5 per CNH Industrial, ora su DELMIA Apriso tra automotive e aerospace.",
-    "Fuori dall'ufficio ho messo in piedi WebHub, una piccola digital agency che porto avanti nei weekend. E costruisco strumenti che mi servono: un server MCP per cercare nella documentazione Apriso, un assistente AI offline per scenari senza rete, qualche app per problemi domestici.",
-    "Mi interessa il codice che qualcuno usa davvero. I problemi concreti più delle astrazioni. E finire le cose, anche quando non vengono perfette.",
+    "Ho passato gli ultimi anni tra fabbriche e sistemi enterprise, imparando che un bug non è mai solo un errore di logica, ma un problema reale per chi sta lavorando. Ho gestito codice su cui poggiavano linee di produzione critiche: un'esperienza che ti insegna il valore della responsabilità e della concretezza.",
+    "Il mio percorso è iniziato tra i sistemi SAP e si è evoluto verso architetture più moderne, ma la filosofia è rimasta la stessa: il software deve servire a qualcosa di concreto. Oggi divido il mio tempo tra la consulenza enterprise e la mia agenzia, WebHub, cercando sempre l'equilibrio tra pragmatismo tecnico e curiosità per le nuove tecnologie.",
+    "Mi interessa il codice che qualcuno usa davvero. I problemi reali più delle astrazioni. E finire le cose, possibilmente bene, senza troppi giri di parole.",
   ],
   stats: [
     { label: "Anni su MES/ERP", value: "5+" },
@@ -54,7 +54,7 @@ export const timeline: TimelineItem[] = [
     title: "Diploma di Perito Informatico",
     org: "ITIS G. Riva, Saronno",
     description:
-      "Basi solide: Java, C++, MySQL, reti e sistemi. Capisco che mi piace programmare e che voglio farlo in azienda, non in startup sperimentale.",
+      "Basi di informatica industriale. È qui che ho capito che la programmazione non è solo logica, ma uno strumento per creare impatto reale nel mondo del lavoro.",
     tag: "education",
   },
   {
@@ -62,7 +62,7 @@ export const timeline: TimelineItem[] = [
     title: "Stage sistemista",
     org: "F1 Consulting · Milano",
     description:
-      "Un mese e mezzo di IT support. Porto a casa una cosa preziosa: saper scrivere documentazione chiara per colleghi che non sono tecnici.",
+      "Supporto IT sul campo. Qui ho imparato la skill più preziosa: tradurre il linguaggio tecnico in soluzioni comprensibili per chi deve solo lavorare meglio.",
     tag: "work",
   },
   {
@@ -70,7 +70,7 @@ export const timeline: TimelineItem[] = [
     title: "Corso SAP ABAP",
     org: "F1 Consulting School",
     description:
-      "Tre settimane intensive. È da qui che comincia davvero la mia carriera.",
+      "Tre settimane intensive di ABAP. È qui che ho capito che la programmazione può essere bellissima o estremamente frustrante. Ho scelto entrambe.",
     tag: "education",
   },
   {
@@ -78,7 +78,7 @@ export const timeline: TimelineItem[] = [
     title: "ABAP Junior Developer",
     org: "Altea Federation",
     description:
-      "Primi progetti veri per Automotive Lighting, AGOS, Lu-Ve. Imparo che prima di scrivere codice bisogna capire come lavora il cliente.",
+      "Primi passi nel mondo corporate per Automotive Lighting, AGOS e Lu-Ve. Imparo che prima di scrivere codice bisogna ascoltare chi quel codice dovrà usarlo ogni giorno.",
     tag: "work",
   },
   {
@@ -86,7 +86,7 @@ export const timeline: TimelineItem[] = [
     title: "IoT / SAP MII Developer",
     org: "Altea Federation",
     description:
-      "Si apre un secondo capitolo: Lamborghini, Luxottica, Elettronica Aster, CIT. Progetto Coldchain per CIT — capisco cosa vuol dire codice con conseguenze fisiche.",
+      "Capitolo IoT: Lamborghini, Luxottica, CIT. Sviluppo soluzioni dove il codice ha conseguenze fisiche. Se il sistema si ferma, si ferma la produzione. Una bella palestra per i nervi.",
     tag: "work",
   },
   {
@@ -94,7 +94,7 @@ export const timeline: TimelineItem[] = [
     title: "Senior Frontend Developer",
     org: "Accenture · CNH Industrial",
     description:
-      "Due anni e mezzo su una dashboard SAPUI5 enterprise per la supply chain. Entro come developer, esco come lead maintainer lato frontend.",
+      "Due anni e mezzo su una dashboard SAPUI5 enorme. Sono entrato come developer e ne sono uscito come punto di riferimento per il frontend, imparando che la manutenzione di una codebase critica richiede più metodo che genio.",
     tag: "milestone",
   },
   {
@@ -102,7 +102,7 @@ export const timeline: TimelineItem[] = [
     title: "Fondazione WebHub",
     org: "webhub.agency",
     description:
-      "Una digital agency tutta mia, accanto al lavoro corporate. Siti, SEO, advertising, social per PMI e piccoli brand.",
+      "La mia agenzia. Un modo per sporcarmi le mani con progetti diversi dal solito corporate: siti per piccoli brand e soluzioni digitali sartoriali, senza troppi giri di parole.",
     tag: "project",
   },
   {
@@ -110,7 +110,7 @@ export const timeline: TimelineItem[] = [
     title: "DELMIA Apriso Developer",
     org: "Accenture · Agrati, Aerospace",
     description:
-      "Tre certificazioni Dassault Systèmes in due mesi. Process Builder, Business Components, integrazioni tra ERP e MES.",
+      "Certificazioni e implementazioni MES Apriso in settori ad alta precisione. Process Builder, Business Components e integrazioni tra ERP e officina.",
     tag: "work",
   },
   {
@@ -118,7 +118,7 @@ export const timeline: TimelineItem[] = [
     title: "AI tooling personale",
     org: "apriso-docs · Hermit Survival AI",
     description:
-      "Esploro LLM integration, MCP server, RAG offline. Corsi Anthropic, Claude Code nel workflow quotidiano.",
+      "Esploro il potenziale degli LLM per rendere la documentazione tecnica industriale realmente interrogabile. Un tool nato per risolvere una mia frustrazione e diventato un asset per il team.",
     tag: "project",
   },
 ];
@@ -142,10 +142,10 @@ export const skillGroups: SkillGroup[] = [
   {
     id: "mes-erp",
     label: "MES / ERP",
-    description: "Core professionale, 5+ anni",
+    description: "Il mio core professionale",
     skills: [
       { name: "SAP MII", level: "Senior", note: "Workbench, XacuteQuery, Illuminator" },
-      { name: "SAPUI5 / OpenUI5", level: "Senior", note: "MVC, Router, Web Workers, i18n" },
+      { name: "SAPUI5 / OpenUI5", level: "Senior", note: "MVC, Web Workers, i18n" },
       { name: "SAP ME", level: "Working" },
       { name: "SAP PCo", level: "Working" },
       { name: "ABAP", level: "Working" },
@@ -156,7 +156,7 @@ export const skillGroups: SkillGroup[] = [
   {
     id: "frontend",
     label: "Frontend",
-    description: "Enterprise e digital agency",
+    description: "Enterprise e progetti web",
     skills: [
       { name: "JavaScript ES6", level: "Senior" },
       { name: "HTML / CSS", level: "Senior" },
@@ -169,7 +169,7 @@ export const skillGroups: SkillGroup[] = [
   {
     id: "backend",
     label: "Backend & Data",
-    description: "Database e integrazione",
+    description: "Database e integrazioni",
     skills: [
       { name: "SQL Server", level: "Working" },
       { name: "Oracle", level: "Familiar" },
@@ -182,7 +182,7 @@ export const skillGroups: SkillGroup[] = [
   {
     id: "ai",
     label: "AI / LLM",
-    description: "Area in crescita rapida",
+    description: "Sperimentazione e automazione",
     skills: [
       { name: "Anthropic API", level: "Working", note: "Uso quotidiano" },
       { name: "MCP (Model Context Protocol)", level: "Working" },
@@ -195,7 +195,7 @@ export const skillGroups: SkillGroup[] = [
   {
     id: "iot",
     label: "Integrazione / IoT",
-    description: "Shop floor e macchine industriali",
+    description: "Dalle macchine al database",
     skills: [
       { name: "OPC UA / DA", level: "Working" },
       { name: "MQTT", level: "Working" },
@@ -205,13 +205,13 @@ export const skillGroups: SkillGroup[] = [
   {
     id: "design",
     label: "Design & Media",
-    description: "Post-produzione, hobby pro",
+    description: "Post-produzione e 3D per passione",
     skills: [
       { name: "Adobe Photoshop", level: "Working" },
       { name: "Adobe Lightroom", level: "Working" },
       { name: "Adobe Illustrator", level: "Familiar" },
       { name: "Adobe After Effects", level: "Familiar" },
-      { name: "Blender", level: "Familiar", note: "Render 3D per Lisa Corti" },
+      { name: "Blender", level: "Familiar", note: "Render per Lisa Corti" },
     ],
   },
 ];
@@ -258,7 +258,7 @@ export const projects: Project[] = [
     role: "Senior Frontend · Lead maintainer",
     team: "9 developer, Accenture",
     teaser:
-      "Dashboard SAPUI5 enterprise per la supply chain. Due anni e mezzo come lead maintainer lato frontend.",
+      "Gestione critica della supply chain. Due anni e mezzo a scalare una dashboard che non poteva permettersi di sbagliare.",
     stack: [
       "SAPUI5",
       "SAP MII",
@@ -275,20 +275,18 @@ export const projects: Project[] = [
     ],
     sections: {
       context:
-        "CNH produce macchine agricole e industriali su più stabilimenti, con centinaia di fornitori e migliaia di codici. I responsabili dei materiali avevano bisogno di un tool real-time per rispondere a domande concrete: quali componenti rischiano di fermare la produzione? Quali ordini ai fornitori vanno aperti? Quali spedizioni sono in ritardo?",
+        "In una produzione massiva come quella di CNH, sapere quale componente fermerà la linea domani è vitale. I responsabili dei materiali avevano bisogno di uno strumento real-time per gestire migliaia di codici e ordini fornitori senza perdersi nel rumore dei dati.",
       work: [
-        "Analisi del runout produttivo giorno per giorno con priorità visive",
-        "Gestione dei call-off verso i fornitori (apertura, monitoraggio, chiusura)",
-        "Tracking delle spedizioni in transito con integrazione esterna e tolleranze per plant",
-        "Escalation multi-livello verso il team di supply chain",
-        "Versione multi-plant con override configurabili per tre stabilimenti",
-        "Export Excel asincrono via Web Worker per dataset oltre le 50k righe",
-        "Refactoring del layer condiviso per ridurre duplicazione e bug di regressione",
+        "Analisi del runout produttivo con visualizzazione delle priorità critiche",
+        "Gestione completa dei call-off e monitoraggio spedizioni in ritardo",
+        "Tracking dei transiti con tolleranze personalizzate per ogni stabilimento",
+        "Motore di export Excel asincrono via Web Worker per gestire oltre 50k righe senza bloccare la UI",
+        "Refactoring del layer condiviso tra i plant per abbattere i bug di regressione",
       ],
       stackDetail:
-        "SAPUI5, SAP MII come middleware, JavaScript ES6, pattern MVC con XML Views e Fragments, Web Workers per l'export pesante, i18n multilingua, Git branch-based.",
+        "Architettura MVC basata su SAPUI5, con SAP MII come middleware. Uso intensivo di XML Views, Fragments e Web Workers per le operazioni pesanti.",
       learnings:
-        "Entrare in una codebase di centinaia di commit e diventare 'quello che sa dove sono le cose' non è una questione di talento, è una questione di metodo. Ho imparato a leggere il codice degli altri con curiosità, non con giudizio. E che la soluzione giusta non è sempre quella più elegante.",
+        "Entrare in una codebase enorme e diventarne il punto di riferimento mi ha insegnato che la chiarezza batte l'eleganza. Ho imparato a leggere il codice degli altri con curiosità, non con giudizio, e che la soluzione 'giusta' è quella che regge il carico della realtà.",
     },
   },
   {
@@ -299,7 +297,7 @@ export const projects: Project[] = [
     period: "Feb 2026 · in corso",
     role: "Apriso Developer",
     teaser:
-      "Implementazione DELMIA Apriso come MES per un'azienda aerospace. Integrazione tra ERP e shop floor.",
+      "Implementazione di DELMIA Apriso in ambito aerospace. Integrazione dati tra Oracle ERP e shop floor.",
     stack: [
       "DELMIA Apriso",
       "Process Builder",
@@ -314,18 +312,17 @@ export const projects: Project[] = [
     ],
     sections: {
       context:
-        "Un'azienda aerospace Tier-1 italiana sta migrando il proprio MES su DELMIA Apriso. L'obiettivo è gestire Item, Routing, Documenti e Engineering Change Orders, interfacciando Apriso con l'ERP Oracle già in uso.",
+        "Migrazione del MES per un'azienda aerospace italiana. L'obiettivo è la gestione di workflow complessi (Item, Routing, ECO) interfacciati con l'ERP Oracle.",
       work: [
-        "Personalizzazioni in Process Builder per estendere i workflow standard",
-        "Business Components custom per logiche specifiche del cliente",
-        "Stored procedure SQL Server per trasformazioni dati",
-        "Manutenzione evolutiva delle interfacce ERP ↔ MES esistenti",
-        "Motore di ricerca interno sulla documentazione Apriso, nato come tool personale e poi utile al team",
+        "Personalizzazione di workflow in Process Builder per estendere le logiche standard",
+        "Sviluppo di Business Components custom per la gestione dati specifica",
+        "Scrittura di stored procedure SQL Server per trasformazioni dati complesse",
+        "Manutenzione evolutiva delle interfacce ERP ↔ MES",
       ],
       stackDetail:
-        "DELMIA Apriso, Process Builder, Business Components, SQL Server, Oracle ERP, payload XML/JSON, Postman per testing end-to-end.",
+        "L'ecosistema DELMIA Apriso richiede un approccio integrato tra Process Builder, logiche DB e validazioni end-to-end via Postman.",
       learnings:
-        "Apriso richiede un ribaltamento mentale rispetto a SAPUI5: qui non lavori fuori e poi esponi via API, stai dentro il runtime e tutto passa per le sue astrazioni. Ho impiegato un paio di mesi a interiorizzarlo, poi la produttività è decollata.",
+        "Apriso richiede un ribaltamento mentale rispetto allo sviluppo web tradizionale: lavori all'interno del runtime e delle sue astrazioni. Una sfida di adattamento che, una volta superata, sblocca una produttività incredibile.",
     },
   },
   {
@@ -337,7 +334,7 @@ export const projects: Project[] = [
     role: "Senior Developer",
     team: "3-4 developer",
     teaser:
-      "Interfaccia drag & drop per assegnare ordini ai macchinari di officina in tempo reale.",
+      "Dispatching degli ordini in tempo reale per le linee automotive. Drag & drop per l'officina.",
     stack: ["DELMIA Apriso", "Process Builder", "JavaScript", "SQL Server"],
     highlight: [
       { label: "Durata", value: "~3 mesi" },
@@ -345,16 +342,16 @@ export const projects: Project[] = [
     ],
     sections: {
       context:
-        "Agrati produce componenti di fissaggio per l'automotive. Gli ordini di produzione devono essere distribuiti dinamicamente sui macchinari in base a disponibilità, carichi, priorità. Serviva uno strumento in cui il capo reparto potesse spostare e riassegnare ordini in modo visivo, senza passare per le schermate gestionali tradizionali.",
+        "Agrati aveva bisogno di un modo visivo e veloce per distribuire gli ordini di produzione sui macchinari. Serviva uno strumento che permettesse ai capi reparto di riassegnare i carichi di lavoro con un semplice trascinamento.",
       work: [
-        "Frontend drag & drop per il dispatching degli ordini sulle postazioni",
-        "Integrazione con il layer Apriso per persistenza e validazione",
-        "Gestione real-time della disponibilità dei macchinari",
+        "Sviluppo del frontend drag & drop per il dispatching degli ordini",
+        "Integrazione diretta con la persistenza dei dati in Apriso",
+        "Gestione in tempo reale della disponibilità dei macchinari",
       ],
       stackDetail:
-        "DELMIA Apriso, Process Builder, JavaScript vanilla per il layer drag & drop, SQL Server per persistenza.",
+        "Process Builder accoppiato con JavaScript vanilla per gestire l'interazione drag & drop in modo fluido.",
       learnings:
-        "Il primo progetto reale su Apriso dopo le certificazioni. È servito a rompere il ghiaccio sulla piattaforma, capire cosa funziona e cosa invece va aggirato. Primo cliente, primo deploy produttivo: più di ogni corso.",
+        "Il mio primo progetto reale su Apriso. Mi è servito a rompere il ghiaccio con la piattaforma e a capire cosa funziona davvero in produzione, al di là dei corsi di certificazione.",
     },
   },
   {
@@ -365,7 +362,7 @@ export const projects: Project[] = [
     period: "Ott 2021 · Dic 2022",
     role: "Developer · Supporto turni",
     teaser:
-      "App SAPUI5 per le postazioni operatore in catena di montaggio. Reperibilità per le emergenze in linea.",
+      "Supporto critico alla linea di montaggio. Se l'operatore si ferma, si ferma tutto. Qui si impara il pragmatismo.",
     stack: ["SAP MII", "SAP ME", "SAP PCo", "MQTT", "SAP HANA", "SAPUI5"],
     highlight: [
       { label: "Durata", value: "~14 mesi" },
@@ -373,19 +370,18 @@ export const projects: Project[] = [
     ],
     sections: {
       context:
-        "In catena di montaggio ogni postazione ha un'app SAPUI5 dedicata che guida l'operatore: pesca dati da HANA e MII, traccia tempi e qualità, gestisce le anomalie. Se qualcosa si rompe, la linea rischia di fermarsi. E fermarsi costa.",
+        "In catena di montaggio, ogni postazione operatore è guidata da un'app che traccia tempi, qualità e anomalie. Se il sistema ha un problema, la linea si ferma e i costi esplodono.",
       work: [
-        "Sviluppo e bug-fixing sulle app in catena di montaggio",
-        "Back-end MII con query HANA, front-end SAPUI5 per gli operatori",
-        "Reperibilità telefonica su turni per le emergenze linea",
+        "Sviluppo e bug-fixing sulle app SAPUI5 dedicate alla produzione",
+        "Backend basato su query HANA e integrazioni MII",
+        "Supporto critico su turni per risolvere le emergenze in linea",
       ],
       stackDetail:
-        "SAP MII, SAP ME, SAP PCo, MQTT, database HANA, frontend SAPUI5.",
+        "Uno stack SAP industriale completo: MII, ME, PCo per la comunicazione con le macchine e frontend SAPUI5 per l'interfaccia uomo-macchina.",
       learnings:
-        "Quando ti chiamano alle 22 perché un operatore è bloccato e la linea sta per fermarsi, non hai il lusso della soluzione elegante. Hai 15 minuti per capire, sistemare, documentare. Ho imparato lì cosa vuol dire delivery-first.",
+        "Quando ricevi una chiamata alle 22 perché la linea è bloccata, impari a dare priorità alla soluzione. Hai pochi minuti per capire, sistemare e ripartire. È stata la mia palestra di delivery-first.",
     },
   },
-
   {
     slug: "webhub",
     category: "side",
@@ -394,29 +390,28 @@ export const projects: Project[] = [
     period: "2024 · oggi",
     role: "Fondatore · Developer",
     teaser:
-      "Digital agency per PMI e piccoli brand. Oltre 10 clienti tra siti web, brand material e piccole consulenze digitali.",
+      "La mia digital agency per PMI e piccoli brand. Un modo per stare fuori dal corporate e costruire soluzioni veloci e concrete.",
     stack: ["WordPress", "SEO", "Advertising", "Branding", "E-commerce"],
     status: "live",
     url: "https://webhub.agency",
     urlLabel: "webhub.agency",
     highlight: [
       { label: "Clienti", value: "10+" },
-      { label: "Servizi", value: "Web · Print · Social" },
+      { label: "Servizi", value: "Web · Branding · Social" },
     ],
     sections: {
       context:
-        "Una digital agency fondata in parallelo al lavoro in Accenture. Nasce dall'esigenza di stare fuori dal corporate per almeno una parte del tempo: ragionare con clienti PMI, consegnare velocemente, avere il cantiere sempre aperto.",
+        "WebHub nasce dalla voglia di gestire progetti dall'inizio alla fine, ragionando con i clienti sulle loro necessità reali senza i tempi del mondo enterprise.",
       work: [
-        "Siti web WordPress con temi custom o configurazioni sartoriali",
-        "SEO on-page e local SEO per brand con target regionale",
-        "Social media management e advertising per clienti brand",
-        "Brand material: biglietti da visita, flyer, identità visiva leggera",
-        "Consulenze digitali per piccole attività che non hanno budget enterprise",
+        "Sviluppo siti WordPress personalizzati",
+        "SEO on-page e strategie local per brand regionali",
+        "Gestione identità visiva e materiali promozionali",
+        "Consulenza digitale diretta per piccole attività",
       ],
       stackDetail:
-        "WordPress come CMS principale, pagine statiche dove ha senso, Figma per il layer grafico, suite Adobe per i materiali di stampa.",
+        "WordPress come base per la velocità di consegna, Figma per il design e suite Adobe per la produzione di materiali creativi.",
       learnings:
-        "Vendere software a una PMI ha regole opposte al lavoro in Accenture. Al cliente non interessa quale framework, interessa quando va online e quanto costa. Ho imparato a scrivere preventivi, gestire aspettative, chiudere progetti in tempi certi.",
+        "Vendere software a una PMI è l'opposto del lavoro corporate. Al cliente interessa quanto costa e se funziona. Ho imparato a gestire budget, aspettative e scadenze in modo molto più serrato.",
     },
   },
   {
@@ -427,7 +422,7 @@ export const projects: Project[] = [
     period: "2025 · oggi",
     role: "Solo · Python",
     teaser:
-      "MCP server che indicizza 60.000 chunk di documentazione DELMIA Apriso e li espone a Claude via ricerca BM25.",
+      "Automatizzo le parti noiose del lavoro. Un server MCP per interrogare 60.000 chunk di documentazione tecnica senza impazzire.",
     stack: ["Model Context Protocol", "Python", "BM25", "Crawler", "HTM · PDF · XML"],
     status: "personal",
     highlight: [
@@ -436,17 +431,16 @@ export const projects: Project[] = [
     ],
     sections: {
       context:
-        "La documentazione ufficiale di DELMIA Apriso non è indicizzata da Google in modo utilizzabile. Cercare una colonna di una tabella o capire come funziona una Business Component richiede ore di navigazione tra manuali. L'ho sistemato una volta per sempre.",
+        "Cercare un'informazione specifica tra migliaia di pagine di documentazione Apriso era una perdita di tempo. Ho deciso di risolverlo costruendo un bridge tra l'AI e i manuali.",
       work: [
-        "Crawler offline sulla documentazione ufficiale (HTM, PDF, schema DB, XML)",
-        "Pipeline di tokenizzazione e indicizzazione BM25 cross-source",
-        "Esposizione via Model Context Protocol a Claude e qualunque LLM MCP-compatible",
-        "Query in linguaggio naturale tradotte in ricerca strutturata sulla doc",
+        "Crawler per l'estrazione di dati da manuali HTM, PDF e schemi DB",
+        "Indicizzazione BM25 per una ricerca testuale efficace",
+        "Integrazione via MCP per permettere all'AI di navigare nella documentazione",
       ],
       stackDetail:
-        "Python per orchestrazione e indicizzazione, BM25 come algoritmo di retrieval, MCP come interfaccia verso l'LLM.",
+        "Python per l'orchestrazione, BM25 come motore di ricerca leggero e MCP come standard di comunicazione con gli LLM.",
       learnings:
-        "Il ROI di uno strumento costruito per te stesso è altissimo: ore risparmiate tutte le settimane. E costruirlo mi ha insegnato quanto la documentazione tecnica industriale sia il contrario di 'cercabile'.",
+        "Il tempo risparmiato ogni settimana è il miglior ritorno sull'investimento possibile. Mi ha insegnato quanto sia importante costruirsi i propri strumenti.",
     },
   },
   {
@@ -457,7 +451,7 @@ export const projects: Project[] = [
     period: "2026 · in corso",
     role: "Solo · Prototipo RAG offline",
     teaser:
-      "Assistente AI offline che interroga file ZIM di Kiwix (manuali survival, ricette, articoli) senza nessuna connessione di rete.",
+      "Assistente AI totalmente offline per scenari senza rete. Manuali tecnici e survival sempre in tasca.",
     stack: ["Python", "llama.cpp", "GGUF", "Kiwix ZIM", "RAG", "Fedora", "LineageOS"],
     status: "in-progress",
     highlight: [
@@ -466,17 +460,16 @@ export const projects: Project[] = [
     ],
     sections: {
       context:
-        "Un assistente che funzioni davvero senza rete, pensato per scenari low-connectivity: acqua potabile, conservazione cibi, pronto soccorso, riparazioni di base. L'idea è trasformare i file ZIM di Kiwix (librerie survival, manuali tecnici, ricette) in una base di conoscenza interrogabile in linguaggio naturale, da un modello AI che gira in locale.",
+        "Un esperimento per vedere quanto lontano si può andare con l'AI locale. Un assistente che non ha bisogno di internet per interrogare manuali tecnici e informazione critica.",
       work: [
-        "Pipeline RAG che estrae i passaggi rilevanti dai file ZIM e li passa al modello come contesto",
-        "Integrazione tra modelli quantizzati GGUF (llama.cpp) e contenuti statici Kiwix",
-        "Ambiente replicabile su Fedora desktop e in futuro su Android con LineageOS + root via Termux",
-        "Query in linguaggio naturale, risposte sintetiche in italiano",
+        "Pipeline RAG ottimizzata per girare su hardware locale",
+        "Integrazione con i file ZIM di Kiwix come base di conoscenza",
+        "Prototipazione su Fedora Linux e preparazione per Android (Termux)",
       ],
       stackDetail:
-        "Python per orchestrazione e retrieval, file ZIM di Kiwix come knowledge base, modelli GGUF quantizzati (es. TinyLlama) con llama.cpp come engine, Fedora Linux su laptop e LineageOS + Termux sul telefono.",
+        "Modelli GGUF quantizzati su llama.cpp, Python per l'estrazione del contesto dai database statici.",
       learnings:
-        "Costruire un sistema RAG davvero offline significa ripensare il tooling 'da desktop' per ambienti ibridi con risorse limitate. E progettare non solo per le feature, ma per cosa succede quando la rete non c'è.",
+        "Progettare per scenari offline significa ripensare tutto il tooling moderno che diamo per scontato. Una bella sfida di efficienza e risorse limitate.",
     },
   },
   {
@@ -487,7 +480,7 @@ export const projects: Project[] = [
     period: "2025 · oggi",
     role: "Solo · Product + Dev",
     teaser:
-      "Trekking companion: organizzazione uscite, inventario zaini, spese condivise, to-do, chat, community.",
+      "Un assistente per il trekking. Tutto quello che serve per organizzare un'uscita di gruppo senza perdersi i pezzi.",
     stack: ["React Native", "Mobile-first", "Community"],
     status: "in-progress",
     url: "https://3kking.app",
@@ -498,80 +491,16 @@ export const projects: Project[] = [
     ],
     sections: {
       context:
-        "Organizzare un trekking con un gruppo di amici significa mettere insieme percorso, meteo, chi porta cosa, chi paga il carburante, dove si dorme, quali farmaci infilare nel kit. 3kking è un tentativo di raccogliere tutto questo in un posto solo.",
+        "Organizzare un'uscita di gruppo significa gestire meteo, zaini, spese e itinerari. 3kking prova a mettere tutto in un unico posto per evitare lo spam su WhatsApp.",
       work: [
-        "Organizzazione uscite: luogo, meteo, mappa interattiva, percorsi",
-        "Inventario zaini condiviso con ownership (chi porta cosa)",
-        "Gestione spese comuni e auto",
-        "To-do list del trekking, chat interna al gruppo",
-        "Community: trekking fatti, recensioni, contatti tra appassionati",
+        "Gestione zaini condivisa per non portare tre fornellini e zero tende",
+        "Calcolatore delle spese comuni e della logistica auto",
+        "Integrazione mappe e itinerari interattivi",
       ],
       stackDetail:
-        "React Native, architettura mobile-first, backend community da definire.",
+        "Sviluppato in React Native con un focus totale sulla UX in mobilità.",
       learnings:
-        "Un'app consumer ha un costo di polish nascosto enorme. Sta imparando a riconoscere quali dettagli sono quelli che fanno davvero la differenza per l'utente — e quali sono vezzi.",
-    },
-  },
-  {
-    slug: "ds-checker",
-    category: "side",
-    client: "Progetto personale",
-    title: "DS Checker",
-    period: "2024 · 2025",
-    role: "Solo",
-    teaser:
-      "Web app che valuta prodotti cosmetici in ottica dermatite seborroica. Classifica ingredienti via Perplexity API.",
-    stack: ["Next.js", "Perplexity API", "Tailwind"],
-    status: "live",
-    url: "https://sjmvne.github.io/DS-Checker/",
-    urlLabel: "sjmvne.github.io/DS-Checker",
-    highlight: [
-      { label: "Tipo", value: "Web app" },
-      { label: "Stato", value: "Live su GitHub Pages" },
-    ],
-    sections: {
-      context:
-        "Avevo bisogno di un modo veloce per valutare shampoo, creme e detergenti senza leggere 40 blog dermatologici ogni volta. Inserisci un prodotto o i suoi ingredienti, ottieni una classificazione: indicato, sconsigliato, neutro, con motivazione.",
-      work: [
-        "Frontend Next.js minimal con form di input",
-        "Integrazione con Perplexity API per il lookup ingredienti",
-        "Logica di classificazione per ingredienti noti come trigger di dermatite seborroica",
-      ],
-      stackDetail:
-        "Next.js per il frontend, API di Perplexity per la ricerca contestuale, deploy su GitHub Pages.",
-      learnings:
-        "Un tool costruito per risolvere un problema personale è già metà validato. Il resto è metterlo online in 4 ore e lasciare che funzioni.",
-    },
-  },
-  {
-    slug: "calcolo-crocchette",
-    category: "side",
-    client: "Progetto personale",
-    title: "Calcolo Crocchette",
-    period: "2024 · in rewrite",
-    role: "Solo",
-    teaser:
-      "Tool di stima del fabbisogno calorico canino e valutazione della qualità del mangime.",
-    stack: ["Next.js", "Nutrizione canina", "UX"],
-    status: "archived",
-    url: "https://sjmvne.github.io/alimentazione-cani/",
-    urlLabel: "sjmvne.github.io/alimentazione-cani",
-    highlight: [
-      { label: "Tipo", value: "Web app" },
-      { label: "Stato", value: "Da rewrite" },
-    ],
-    sections: {
-      context:
-        "I miei due cani e il loro mangime. Leggere etichette a occhio per capire se il rapporto proteine/carboidrati/additivi è accettabile mi stancava. Ho fatto un tool che lo fa al posto mio.",
-      work: [
-        "Calcolatore del fabbisogno calorico canino per peso e attività",
-        "Analisi etichette mangimi (proteine, carboidrati, ceneri, additivi)",
-        "Classificazione qualitativa dei prodotti analizzati",
-      ],
-      stackDetail:
-        "Next.js, deploy su GitHub Pages. La repository è più vecchia e va riscritta — la nuova versione avrà UX più curata e più alimenti coperti.",
-      learnings:
-        "Un primo prototipo ti dice subito se l'idea ha senso. Poi però va rimesso a posto, e quello è il lavoro vero. Sto per affrontarlo.",
+        "Le app consumer richiedono un livello di rifinitura che nel corporate spesso si ignora. Sto imparando quali dettagli fanno davvero la differenza per chi le usa in cima a una montagna.",
     },
   },
   {
@@ -582,28 +511,28 @@ export const projects: Project[] = [
     period: "2024 · 2025",
     role: "Solo · Dev + UX",
     teaser:
-      "Push-your-luck card game digitalizzato. Multiplayer real-time con bot, tema custom, supporto PWA.",
+      "Un gioco di carte push-your-luck digitalizzato. Multiplayer P2P, bot e zero frizione.",
     stack: ["Vanilla JS", "PeerJS", "PWA", "State Machine"],
     status: "live",
     url: "https://sjmvne.github.io/Flip7/",
     urlLabel: "sjmvne.github.io/Flip7",
     highlight: [
-      { label: "Tipo", value: "Multiplayer real-time" },
+      { label: "Tipo", value: "Multiplayer P2P" },
       { label: "Extra", value: "Bot · PWA · Temi" },
     ],
     sections: {
       context:
-        "Flip 7 è un gioco di carte push-your-luck che giro da qualche tempo con gli amici. Mi andava di digitalizzarlo per partite veloci a distanza, con il minimo possibile di frizione.",
+        "Volevo giocare a Flip 7 a distanza con gli amici senza dover configurare server o account. Così l'ho costruito come PWA peer-to-peer.",
       work: [
-        "Logica di gioco completa: mani, bust, stop, punteggi",
-        "Multiplayer real-time via PeerJS (peer-to-peer, nessun server)",
-        "Bot per giocare anche da soli o riempire i posti mancanti",
-        "Tema custom e supporto PWA per installarlo come app",
+        "Logica di gioco completa basata su una state machine solida",
+        "Multiplayer real-time tramite PeerJS (nessun server centrale)",
+        "Sviluppo di bot per partite veloci anche in solitaria",
+        "Supporto PWA per l'installazione su mobile",
       ],
       stackDetail:
-        "Vanilla JavaScript per non appesantire, PeerJS per il multiplayer peer-to-peer, service worker per la PWA, estetica web moderna senza librerie di UI.",
+        "Vanilla JavaScript per la massima velocità, PeerJS per la connessione diretta e CSS moderno senza framework pesanti.",
       learnings:
-        "Progetto di puro piacere. Mi ha insegnato che si può costruire qualcosa di finito e divertente anche senza stack complessi — Vanilla JS e un protocollo P2P bastano. E che i bot con una logica decente valgono più di dieci feature di matchmaking.",
+        "È stato un progetto di puro piacere. Mi ha ricordato che si possono fare cose bellissime anche con strumenti semplici, se l'idea di base è solida.",
     },
   },
 ];
@@ -785,36 +714,36 @@ export const dogs = [
     breed: "Border Collie",
     age: "5 anni",
     description:
-      "Il classico Border: intelligente, instancabile, ti guarda come se stesse già calcolando dove lancerai la prossima palla prima che tu ci pensi. In vacanza vuole sapere dove stiamo andando prima di noi.",
+      "Border Collie classico: più intelligente di me, mi guarda come se stesse già calcolando il refactoring del mio codice prima ancora che io prema Invio. In vacanza vuole sempre sapere dove stiamo andando prima di noi.",
   },
   {
     name: "Lady",
     breed: "Pastore Australiano",
     age: "3 anni",
     description:
-      "Più dolce, più collosa, in perenne ricerca di coccole. Whisky le ha insegnato tutti i giochi, ma il risultato è una sua interpretazione personale — più caotica.",
+      "Dolce e perennemente in cerca di coccole. Whisky le ha insegnato tutti i giochi, ma il risultato è una sua interpretazione personale — decisamente più caotica e rumorosa.",
   },
 ];
 
 export const interests = [
   {
-    title: "Fotografia",
+    title: "Fotografia & Videomaking FPV",
     description:
-      "Reportage di viaggio, architettura urbana, ritratti dei cani. Lightroom e Photoshop in post.",
+      "Reportage urbani, ritratti ai cani e riprese aeree. Volare in FPV (DJI Avata 2) e pilotare droni mi permette di unire l'aspetto tecnico dei controlli alla ricerca visiva dell'inquadratura perfetta. Uso Lightroom, Photoshop e Premiere per la post.",
   },
   {
-    title: "Montagna e trekking",
+    title: "Montagna & Trekking",
     description:
-      "Da qui nasce anche 3kking.app. Preparare uno zaino ha lo stesso ritmo di un deploy.",
+      "Da qui nasce anche 3kking.app. Preparare uno zaino e pianificare un itinerario in quota richiede lo stesso focus e la stessa gestione degli imprevisti di un buon deploy in produzione.",
   },
   {
-    title: "Strumentazione nerd",
+    title: "Hardware & Setup",
     description:
-      "Due droni DJI: Avata 2 per il FPV, Neo 2 per le riprese quotidiane. Un po' di tempo su hardware e gadget, ma solo se finiscono davvero nel workflow.",
+      "Sperimento spesso con nuovo hardware, automazioni e tool di produttività. Ma ho una regola d'oro: se un gadget o un setup non semplifica davvero il workflow quotidiano, non dura a lungo sulla scrivania.",
   },
   {
-    title: "Videogiochi",
+    title: "Scienza e Spazio, Natura",
     description:
-      "Cooperativi con amici, di solito. La modalità social preferita dopo la cena.",
+      "Appassionato di esplorazione spaziale, astrofisica e natura. Quando non guardo schermi, cerco di capire come funzionano l'universo e il mondo fisico attorno a noi, trovando ispirazione nella complessità immensa dei sistemi naturali.",
   },
 ];

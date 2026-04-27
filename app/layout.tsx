@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { TerminalOverlay } from "@/components/terminal/terminal-overlay";
+import { BootSplash } from "@/components/terminal/boot-splash";
+import { TerminalTransitionProvider } from "@/components/terminal/terminal-transition";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -111,11 +114,15 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+      <body className="min-h-full flex flex-col bg-background text-foreground bg-blueprint">
         <ThemeProvider>
-          {children}
-          <Analytics />
-          <SpeedInsights />
+          <TerminalTransitionProvider>
+            {children}
+            <Analytics />
+            <SpeedInsights />
+            <TerminalOverlay />
+            <BootSplash />
+          </TerminalTransitionProvider>
         </ThemeProvider>
       </body>
     </html>

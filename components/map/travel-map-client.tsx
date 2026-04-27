@@ -103,8 +103,8 @@ export default function TravelMapClient() {
       <div
         className={cn(
           "pointer-events-none absolute bottom-3 right-3",
-          "rounded-md border border-border bg-background/85 px-2.5 py-1",
-          "font-mono text-[10px] text-muted backdrop-blur-sm",
+          "glass px-2.5 py-1 rounded-md",
+          "font-mono text-[10px] text-muted",
         )}
       >
         {travels.length} città visitate
@@ -115,7 +115,7 @@ export default function TravelMapClient() {
 
 function TravelMapFallback() {
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-border bg-surface/40 p-6">
+    <div className="relative overflow-hidden rounded-2xl glass-card p-6">
       <p className="font-mono text-xs uppercase tracking-widest text-accent">
         Mappa offline
       </p>

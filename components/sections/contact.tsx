@@ -1,4 +1,7 @@
+"use client";
+
 import { Mail, MapPin, Phone } from "lucide-react";
+import { useRef } from "react";
 import {
   GithubIcon,
   InstagramIcon,
@@ -6,6 +9,7 @@ import {
 } from "@/components/ui/brand-icons";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { site } from "@/lib/site-data";
+import { useSignalPulse } from "@/lib/gsap-animations";
 
 const socials = [
   { Icon: LinkedinIcon, label: "LinkedIn", href: site.social.linkedin, handle: "in/simonepepe00" },
@@ -15,11 +19,39 @@ const socials = [
 ];
 
 export function ContactSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  useSignalPulse(sectionRef);
+
   return (
     <section
+      ref={sectionRef}
       id="contact"
       className="relative scroll-mt-24 overflow-hidden border-t border-border/60 py-24 sm:py-32"
     >
+      {/* Signal waves background */}
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <svg
+          aria-hidden
+          width="600"
+          height="600"
+          viewBox="0 0 600 600"
+          className="opacity-15"
+        >
+          {[60, 120, 180, 240, 300].map((r, i) => (
+            <circle
+              key={i}
+              className="signal-wave"
+              cx="300"
+              cy="300"
+              r={r}
+              fill="none"
+              stroke="var(--accent)"
+              strokeWidth="1"
+            />
+          ))}
+        </svg>
+      </div>
+
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 h-[400px] accent-glow opacity-50"
@@ -30,7 +62,7 @@ export function ContactSection() {
           <SectionHeading
             eyebrow="13 · Contact"
             title="Scrivimi."
-            description="Progetti MES/ERP, siti per WebHub, idee assurde, inviti a trekking con cani. Rispondo entro 48 ore."
+            description="Sempre aperto a nuove sfide tecniche, collaborazioni interessanti o anche solo per fare due chiacchiere su tech e dintorni. Scrivimi pure."
           />
           <div className="flex flex-wrap gap-6 pt-4 font-mono text-sm text-muted">
             <span className="inline-flex items-center gap-2">
@@ -51,7 +83,7 @@ export function ContactSection() {
                 href={href}
                 target={href.startsWith("http") ? "_blank" : undefined}
                 rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="group flex items-center gap-4 rounded-2xl border border-border bg-surface/60 p-4 transition-all hover:border-accent/40 hover:bg-accent-soft"
+                className="contact-card group flex items-center gap-4 rounded-2xl border border-border bg-surface/60 p-4 transition-all hover:border-accent/40 hover:bg-accent-soft"
               >
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border bg-background text-muted transition-colors group-hover:border-accent/40 group-hover:text-accent">
                   <Icon className="h-5 w-5" />

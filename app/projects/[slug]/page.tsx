@@ -1,9 +1,9 @@
-import { ArrowLeft, ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { SiteHeader } from "@/components/site-header";
+import { BackButton } from "@/components/terminal/back-button";
 import { projects } from "@/lib/site-data";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -39,13 +39,7 @@ export default async function ProjectPage({ params }: PageProps) {
       <SiteHeader />
       <main className="flex-1 pt-14">
         <article className="container-page py-16 sm:py-24">
-          <Link
-            href={backHref}
-            className="group mb-12 inline-flex items-center gap-2 font-mono text-xs text-muted transition-colors hover:text-accent"
-          >
-            <ArrowLeft className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-1" />
-            {backLabel}
-          </Link>
+          <BackButton href={backHref} label={backLabel} />
 
           <header className="relative mb-16 flex flex-col gap-6 border-b border-border pb-12">
             <div

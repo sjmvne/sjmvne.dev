@@ -1,8 +1,11 @@
+"use client";
+
 import { PawPrint } from "lucide-react";
+import { useRef } from "react";
 import { CountUp } from "@/components/motion/count-up";
-import { Reveal } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { about } from "@/lib/site-data";
+import { useAboutParallax } from "@/lib/gsap-animations";
 
 function parseStat(value: string) {
   const match = value.match(/^(\d+)(.*)$/);
@@ -11,31 +14,33 @@ function parseStat(value: string) {
 }
 
 export function AboutSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  useAboutParallax(sectionRef);
+
   return (
     <section
+      ref={sectionRef}
       id="about"
       className="container-page relative scroll-mt-24 py-24 sm:py-32"
     >
       <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
         <div className="flex flex-col gap-8">
-          <Reveal>
-            <SectionHeading
-              eyebrow="01 · About"
-              title={about.title}
-              description="Sto in mezzo al codice da qualche anno. Un po' per chi paga lo stipendio, un po' per cose che mi vengono in mente da solo."
-            />
-          </Reveal>
+          <SectionHeading
+            eyebrow="01 · About"
+            title={about.title}
+            description="Sto in mezzo al codice da qualche anno. Un po' per chi paga lo stipendio, un po' per cose che mi vengono in mente da solo."
+          />
           <div className="flex flex-col gap-5 text-base leading-relaxed text-foreground/90 sm:text-lg">
             {about.paragraphs.map((p, i) => (
-              <Reveal key={i} delay={0.1 + i * 0.1} y={16}>
-                <p>{p}</p>
-              </Reveal>
+              <p key={i} className="about-paragraph">
+                {p}
+              </p>
             ))}
           </div>
         </div>
 
-        <Reveal delay={0.2} className="self-start lg:sticky lg:top-24">
-          <div className="relative overflow-hidden rounded-2xl border border-border bg-surface/40 p-6 backdrop-blur-sm">
+        <div className="self-start lg:sticky lg:top-24" style={{ perspective: 800 }}>
+          <div className="stats-card relative overflow-hidden rounded-2xl glass-card p-6">
             <div
               aria-hidden
               className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 accent-glow opacity-40"
@@ -59,7 +64,7 @@ export function AboutSection() {
               })}
             </div>
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );

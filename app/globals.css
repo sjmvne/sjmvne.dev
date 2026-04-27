@@ -15,6 +15,12 @@
   --accent-glow: rgba(124, 58, 237, 0.28);
 
   --ring: var(--accent);
+
+  --glass-bg: rgba(255, 255, 255, 0.35);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-highlight: inset 0 1px 1px rgba(255, 255, 255, 0.5), inset 1px 0 1px rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.04);
+  --glass-reflection: linear-gradient(110deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.05) 25%, transparent 50%);
 }
 
 .dark {
@@ -30,6 +36,12 @@
   --accent-glow: rgba(139, 92, 246, 0.35);
 
   --ring: var(--accent-hi);
+
+  --glass-bg: rgba(24, 24, 27, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --glass-reflection: linear-gradient(110deg, rgba(255, 255, 255, 0.04) 0%, transparent 40%);
 }
 
 @theme inline {
@@ -111,9 +123,6 @@
 
   .hero-reveal {
     opacity: 0;
-    transform: translateY(16px);
-    animation: hero-fade-up 0.7s cubic-bezier(0.2, 0.65, 0.3, 1) forwards;
-    animation-delay: 0ms;
   }
 
   @keyframes hero-fade-up {
@@ -130,6 +139,46 @@
       var(--accent) 50%,
       transparent 100%
     );
+  }
+
+  .bg-blueprint {
+    position: relative;
+  }
+  .bg-blueprint::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-image: 
+      linear-gradient(to right, var(--border) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+    background-size: 64px 64px;
+    opacity: 0.25;
+    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+  }
+
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(14px) saturate(180%);
+    -webkit-backdrop-filter: blur(14px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow), var(--glass-highlight);
+  }
+
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(14px) saturate(180%);
+    -webkit-backdrop-filter: blur(14px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow), var(--glass-highlight);
+    border-radius: var(--radius);
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
   }
 }
 
