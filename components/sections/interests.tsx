@@ -16,7 +16,7 @@ export function InterestsSection() {
       className="container-page relative scroll-mt-24 py-24 sm:py-32"
     >
       <SectionHeading
-        eyebrow="11 · Interests"
+        eyebrow="10 · Interests"
         title="Fuori dal codice."
         description="Poche cose, scelte bene. Quello che faccio quando il laptop è chiuso."
       />

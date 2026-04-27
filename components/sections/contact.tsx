@@ -60,7 +60,7 @@ export function ContactSection() {
       <div className="container-page relative z-10 flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-20">
         <div className="flex flex-1 flex-col gap-6">
           <SectionHeading
-            eyebrow="13 · Contact"
+            eyebrow="12 · Contact"
             title="Scrivimi."
             description="Sempre aperto a nuove sfide tecniche, collaborazioni interessanti o anche solo per fare due chiacchiere su tech e dintorni. Scrivimi pure."
           />

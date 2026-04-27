@@ -13,7 +13,7 @@ export function DogsTeaserSection() {
     >
       <Reveal>
         <SectionHeading
-          eyebrow="09 · Dogs"
+          eyebrow="08 · Dogs"
           title="Whisky & Lady."
           description="Un Border Collie e un Pastore Australiano. I motivi per cui cerco destinazioni pet-friendly e per cui la domenica inizia alle 7."
         />

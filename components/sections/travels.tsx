@@ -11,7 +11,7 @@ export function TravelsSection() {
     >
       <Reveal>
         <SectionHeading
-          eyebrow="08 · Travels"
+          eyebrow="07 · Travels"
           title="Dove sono stato."
           description="Pochi viaggi, abbastanza curati. Di solito con Whisky e Lady in macchina, una fotocamera, una mappa dei ristoranti locali."
         />

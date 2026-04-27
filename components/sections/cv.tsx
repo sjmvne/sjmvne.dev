@@ -8,7 +8,7 @@ export function CvSection() {
       className="container-page relative scroll-mt-24 py-24 sm:py-32"
     >
       <SectionHeading
-        eyebrow="12 · CV"
+        eyebrow="11 · CV"
         title="Scarica il CV."
         description="Versione PDF aggiornata, pronta per recruiter o colleghi che vogliono un formato sfogliabile."
       />

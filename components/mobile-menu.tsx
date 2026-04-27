@@ -2,8 +2,12 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import {
+  Award,
   Briefcase,
+  Camera,
   Download,
+  FileText,
+  Heart,
   Home,
   Mail,
   MapPin,
@@ -30,9 +34,13 @@ const nav: NavItem[] = [
   { id: "03", href: "/#skills", label: "Skills", icon: Wrench },
   { id: "04", href: "/#projects", label: "Progetti", icon: Briefcase },
   { id: "05", href: "/#side-projects", label: "Lab", icon: Terminal },
-  { id: "06", href: "/#travels", label: "Viaggi", icon: MapPin },
-  { id: "07", href: "/#dogs", label: "Whisky & Lady", icon: PawPrint },
-  { id: "08", href: "/#contact", label: "Contatti", icon: Mail },
+  { id: "06", href: "/#certifications", label: "Certificazioni", icon: Award },
+  { id: "07", href: "/#travels", label: "Viaggi", icon: MapPin },
+  { id: "08", href: "/#dogs", label: "Whisky & Lady", icon: PawPrint },
+  { id: "09", href: "/#photography", label: "Fotografia", icon: Camera },
+  { id: "10", href: "/#interests", label: "Interessi", icon: Heart },
+  { id: "11", href: "/#cv", label: "CV", icon: FileText },
+  { id: "12", href: "/#contact", label: "Contatti", icon: Mail },
 ];
 
 export function MobileMenu({
@@ -132,7 +140,7 @@ export function MobileMenu({
 
             {/* Nav Links */}
             <nav className="flex-1 overflow-y-auto px-6 py-8">
-              <ul className="flex flex-col gap-3">
+              <ul className="flex flex-col">
                 {nav.map((item) => {
                   const Icon = item.icon;
                   return (

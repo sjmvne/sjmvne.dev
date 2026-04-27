@@ -127,11 +127,6 @@ export function HeroSection() {
         </div>
       </motion.div>
 
-      <motion.div
-        aria-hidden
-        style={reduceMotion ? undefined : { scaleX: scrollYProgress }}
-        className="absolute bottom-0 left-0 right-0 h-px origin-left bg-gradient-to-r from-accent via-accent-hi to-transparent"
-      />
     </section>
   );
 }

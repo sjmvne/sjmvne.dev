@@ -36,10 +36,13 @@ yarn-error.log*
 # vercel
 .vercel
 
-# claude code
+# internal / agent configs
+.agents/
+.continue/
 .claude/
 AGENTS.md
 CLAUDE.md
+README.md
 
 # typescript
 *.tsbuildinfo

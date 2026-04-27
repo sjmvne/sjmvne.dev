@@ -12,7 +12,7 @@ export function PhotographySection() {
       className="container-page relative scroll-mt-24 py-24 sm:py-32"
     >
       <SectionHeading
-        eyebrow="10 · Photo"
+        eyebrow="09 · Photo"
         title="Fotografia."
         description="Reportage di viaggio, architettura urbana, ritratti di due cani che non stanno fermi. Lightroom + Photoshop in post."
       />

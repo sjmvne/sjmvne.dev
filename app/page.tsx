@@ -12,25 +12,34 @@ import { SkillsSection } from "@/components/sections/skills";
 import { TimelineSection } from "@/components/sections/timeline";
 import { TravelsSection } from "@/components/sections/travels";
 import { SiteHeader } from "@/components/site-header";
+import { ScrollSection } from "@/components/ui/scroll-section";
 
 export default function Home() {
+  const sections = [
+    HeroSection,
+    AboutSection,
+    TimelineSection,
+    SkillsSection,
+    FeaturedProjectsSection,
+    SideProjectsSection,
+    CertificationsSection,
+    TravelsSection,
+    DogsTeaserSection,
+    PhotographySection,
+    InterestsSection,
+    CvSection,
+    ContactSection,
+  ];
+
   return (
     <>
       <SiteHeader />
       <main className="flex flex-1 flex-col">
-        <HeroSection />
-        <AboutSection />
-        <TimelineSection />
-        <SkillsSection />
-        <FeaturedProjectsSection />
-        <SideProjectsSection />
-        <CertificationsSection />
-        <TravelsSection />
-        <DogsTeaserSection />
-        <PhotographySection />
-        <InterestsSection />
-        <CvSection />
-        <ContactSection />
+        {sections.map((Section, idx) => (
+          <ScrollSection key={idx} index={idx} isLast={idx === sections.length - 1}>
+            <Section />
+          </ScrollSection>
+        ))}
       </main>
     </>
   );
