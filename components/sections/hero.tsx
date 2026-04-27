@@ -75,7 +75,7 @@ export function HeroSection() {
             <span className="text-accent">{hero.statusLine.value}</span>
           </span>
           <span className="text-muted/60">·</span>
-          <span suppressHydrationWarning>{now || "— —"} Milano</span>
+          <span suppressHydrationWarning className="tabular-nums">{now || "— —"} Milano</span>
         </div>
 
         <div className="flex flex-col gap-2">
@@ -86,7 +86,7 @@ export function HeroSection() {
           </p>
 
           <h1
-            className="hero-reveal text-balance text-5xl font-semibold leading-[1.02] tracking-tight sm:text-7xl md:text-8xl lg:text-[7.5rem]"
+            className="hero-reveal text-balance text-5xl font-semibold leading-[0.98] tracking-tighter sm:text-7xl md:text-8xl lg:text-[7.5rem]"
           >
             <span className="bg-gradient-to-br from-foreground via-foreground to-accent bg-clip-text text-transparent">
               {hero.name}

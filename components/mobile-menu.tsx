@@ -63,7 +63,7 @@ export function MobileMenu({
           animate={{ opacity: 1, backdropFilter: "blur(28px)" }}
           exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-[70] glass border-none md:hidden"
+          className="fixed inset-0 z-[10000] glass border-none md:hidden"
           onClick={onClose}
           aria-modal="true"
           role="dialog"
@@ -83,7 +83,7 @@ export function MobileMenu({
             className={cn(
               "absolute inset-x-0 bottom-0 flex max-h-[92dvh] flex-col overflow-hidden",
               "rounded-t-3xl border-t border-border bg-background",
-              "shadow-[0_-20px_60px_-15px_rgba(0,0,0,0.4)]",
+              "shadow-[0_-20px_60px_-15px_rgba(0,0,0,0.5)]",
             )}
           >
             <div className="flex shrink-0 items-center justify-center pt-3 pb-2">

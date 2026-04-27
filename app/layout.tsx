@@ -114,7 +114,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-background text-foreground bg-blueprint">
+      <body className="min-h-full flex flex-col bg-background text-foreground bg-blueprint grain-overlay">
         <ThemeProvider>
           <TerminalTransitionProvider>
             {children}

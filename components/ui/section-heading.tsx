@@ -18,21 +18,27 @@ export function SectionHeading({
   return (
     <header
       className={cn(
-        "flex max-w-3xl flex-col gap-3",
+        "flex max-w-3xl flex-col gap-4",
         align === "center" && "mx-auto items-center text-center",
         className,
       )}
     >
       {eyebrow && (
-        <span className="font-mono text-xs uppercase tracking-widest text-accent">
+        /* Lowercase monospace label — more sophisticated than ALL-CAPS */
+        <span className="font-mono text-[11px] tracking-[0.22em] text-accent uppercase">
           {eyebrow}
         </span>
       )}
-      <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
+      <h2
+        className={cn(
+          "text-balance font-semibold leading-[1.0] tracking-tighter",
+          "text-3xl sm:text-4xl md:text-[3.25rem]",
+        )}
+      >
         {title}
       </h2>
       {description && (
-        <p className="text-balance text-base text-muted sm:text-lg">
+        <p className="text-pretty text-base text-muted sm:text-lg max-w-xl leading-relaxed">
           {description}
         </p>
       )}

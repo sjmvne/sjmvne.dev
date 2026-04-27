@@ -1,5 +1,6 @@
 import { ArrowUpRight, PawPrint } from "lucide-react";
 import Link from "next/link";
+import { TerminalLink } from "@/components/terminal/terminal-link";
 import { Reveal } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { dogs } from "@/lib/site-data";
@@ -50,13 +51,13 @@ export function DogsTeaserSection() {
       </div>
 
       <div className="mt-8">
-        <Link
+        <TerminalLink
           href="/dogs"
           className="group inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-5 py-2.5 text-sm text-foreground transition-all hover:border-accent/40 hover:bg-accent-soft hover:text-accent"
         >
           <span>Scopri Whisky & Lady</span>
           <ArrowUpRight className="h-4 w-4 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-        </Link>
+        </TerminalLink>
       </div>
     </section>
   );

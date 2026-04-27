@@ -3,7 +3,7 @@
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { TerminalLink } from "@/components/terminal/terminal-link";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { MobileMenu } from "@/components/mobile-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
@@ -18,10 +18,38 @@ const navLinks = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const curr = window.scrollY;
+      // Always show at top of page
+      if (curr < 60) {
+        setVisible(true);
+      } else if (curr > lastScrollY.current) {
+        // Scrolling down → hide
+        setVisible(false);
+      } else {
+        // Scrolling up → show
+        setVisible(true);
+      }
+      lastScrollY.current = curr;
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 glass border-x-0 border-t-0 rounded-none shadow-none">
+      <header
+        className={cn(
+          "fixed inset-x-0 top-0 z-50 glass border-x-0 border-t-0 rounded-none shadow-none",
+          "transition-transform duration-300 ease-in-out",
+          visible ? "translate-y-0" : "-translate-y-full",
+        )}
+      >
         <div className="container-page flex h-14 items-center justify-between gap-4">
           <TerminalLink
             href="/"
