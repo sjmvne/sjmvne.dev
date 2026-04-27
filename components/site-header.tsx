@@ -19,19 +19,6 @@ const navLinks = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
-  const [visible, setVisible] = useState(true);
-  const { scrollY } = useScroll();
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious() ?? 0;
-    if (latest < 60) {
-      setVisible(true);
-    } else if (latest > previous && latest > 60) {
-      setVisible(false);
-    } else {
-      setVisible(true);
-    }
-  });
 
   useEffect(() => {
     if (open) {
@@ -45,9 +32,8 @@ export function SiteHeader() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 glass border-x-0 border-t-0 rounded-none shadow-none",
-          "transition-transform duration-300 ease-in-out",
-          visible ? "translate-y-0" : "-translate-y-full",
+          "sticky top-0 z-[100] glass border-x-0 border-t-0 rounded-none shadow-none",
+          "transition-all duration-300 ease-in-out",
         )}
       >
         <div className="container-page flex h-14 items-center justify-between gap-4">

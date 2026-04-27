@@ -128,9 +128,43 @@ export function SkillsSection() {
         description="Il mio intero ecosistema tecnologico mappato su un'unica motherboard. Dai componenti core in fabbrica (MES) ai co-processori cloud e AI."
       />
 
+      {/* Signal Legend - Moved to the top */}
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 rounded-xl border border-accent/10 bg-surface/30 p-4 sm:p-6">
+        <div className="flex w-full items-center justify-center gap-2 mb-2 sm:w-auto sm:mb-0">
+          <span className="font-mono text-[10px] uppercase tracking-widest text-muted">
+            Livello Affinità:
+          </span>
+        </div>
+        <div className="flex flex-wrap justify-center gap-6">
+          <div className="flex items-center gap-3">
+            <SignalBars level="Senior" />
+            <span className="font-mono text-[10px] uppercase tracking-tighter text-foreground/70">
+              Senior
+            </span>
+          </div>
+          <div className="flex items-center gap-3">
+            <SignalBars level="Working" />
+            <span className="font-mono text-[10px] uppercase tracking-tighter text-foreground/70">
+              Working
+            </span>
+          </div>
+          <div className="flex items-center gap-3">
+            <SignalBars level="Familiar" />
+            <span className="font-mono text-[10px] uppercase tracking-tighter text-foreground/70">
+              Familiar
+            </span>
+          </div>
+          <div className="flex items-center gap-3">
+            <SignalBars level="Exposure" />
+            <span className="font-mono text-[10px] uppercase tracking-tighter text-foreground/70">
+              Exposure
+            </span>
+          </div>
+        </div>
+      </div>
 
       {/* Unified Motherboard Container */}
-      <div className="relative mt-12 overflow-hidden rounded-3xl border-2 border-border/60 bg-[#0a0a0c] p-4 sm:p-8 md:p-12 shadow-2xl">
+      <div className="relative mt-8 overflow-hidden rounded-3xl border-2 border-border/60 bg-[#0a0a0c] p-4 sm:p-8 md:p-12 shadow-2xl">
         {/* Background circuit grid */}
         <div className="circuit-grid absolute inset-0 opacity-100" />
         
@@ -164,40 +198,6 @@ export function SkillsSection() {
           ))}
         </div>
 
-        {/* Signal Legend */}
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 rounded-xl border border-accent/10 bg-surface/30 p-4 sm:p-6">
-          <div className="flex w-full items-center justify-center gap-2 mb-2 sm:w-auto sm:mb-0">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-muted">
-              Potenza Segnale:
-            </span>
-          </div>
-          <div className="flex flex-wrap justify-center gap-6">
-            <div className="flex items-center gap-3">
-              <SignalBars level="Senior" />
-              <span className="font-mono text-[10px] uppercase tracking-tighter text-foreground/70">
-                Senior
-              </span>
-            </div>
-            <div className="flex items-center gap-3">
-              <SignalBars level="Working" />
-              <span className="font-mono text-[10px] uppercase tracking-tighter text-foreground/70">
-                Working
-              </span>
-            </div>
-            <div className="flex items-center gap-3">
-              <SignalBars level="Familiar" />
-              <span className="font-mono text-[10px] uppercase tracking-tighter text-foreground/70">
-                Familiar
-              </span>
-            </div>
-            <div className="flex items-center gap-3">
-              <SignalBars level="Exposure" />
-              <span className="font-mono text-[10px] uppercase tracking-tighter text-foreground/70">
-                Exposure
-              </span>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
