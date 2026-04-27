@@ -128,8 +128,8 @@ export function TimelineSection() {
       <Reveal>
         <SectionHeading
           eyebrow="02 · Percorso"
-          title="Dove sono passato."
-          description="Dalla scuola al primo stage, dal primo ABAP alla lead maintainership su una codebase SAPUI5 da 900 commit."
+          title="Il mio percorso."
+          description="Dalla scuola al primo stage, dal primo ABAP alla lead maintainership su un progetto SAPUI5"
         />
       </Reveal>
 

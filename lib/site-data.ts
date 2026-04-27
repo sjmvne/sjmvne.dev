@@ -17,7 +17,7 @@ export const hero = {
   greeting: "Ciao, sono",
   name: "Simone",
   tagline:
-    "Costruisco software per l'industria e tool per risolvere problemi quotidiani. Di giorno in Accenture tra sistemi MES e dashboard enterprise, la sera esploro AI, fotografia e tutto ciò che può essere automatizzato.",
+    "Costruisco software per l'industria e tool per risolvere problemi quotidiani. Di giorno in Accenture tra sistemi MES e dashboard enterprise, la sera ogni tanto freelancer.",
   meta: "Crafting digital experiences",
   statusLine: {
     label: "Attualmente su",
@@ -28,8 +28,8 @@ export const hero = {
 export const about = {
   title: "Chi sono",
   paragraphs: [
-    "Ho passato gli ultimi anni tra fabbriche e sistemi enterprise, imparando che un bug non è mai solo un errore di logica, ma un problema reale per chi sta lavorando. Ho gestito codice su cui poggiavano linee di produzione critiche: un'esperienza che ti insegna il valore della responsabilità e della concretezza.",
-    "Il mio percorso è iniziato tra i sistemi SAP e si è evoluto verso architetture più moderne, ma la filosofia è rimasta la stessa: il software deve servire a qualcosa di concreto. Oggi divido il mio tempo tra la consulenza enterprise e la mia agenzia, WebHub, cercando sempre l'equilibrio tra pragmatismo tecnico e curiosità per le nuove tecnologie.",
+    "Ho passato gli ultimi anni tra integrazioni ERP/MES in diverse fabbriche e sistemi enterprise, imparando che un bug non è mai solo un errore di logica, ma un problema reale per chi sta lavorando. Ho gestito codice su cui poggiavano linee di produzione critiche: un'esperienza che ti insegna il valore della responsabilità e della concretezza.",
+    "Il mio percorso è iniziato tra i sistemi SAP e si è evoluto verso architetture più moderne, ma la filosofia è rimasta la stessa: il software deve servire a qualcosa di concreto. Metterci del mio è una necessità, perciò mi divido tra consulenza enterprise e progetti personali. Mi trovi spesso a sperimentare con nuove tecnologie, con software per automatizzare task ripetitivi e tool per rendere alcuni compiti più semplici.",
     "Mi interessa il codice che qualcuno usa davvero. I problemi reali più delle astrazioni. E finire le cose, possibilmente bene, senza troppi giri di parole.",
   ],
   stats: [
@@ -54,7 +54,7 @@ export const timeline: TimelineItem[] = [
     title: "Diploma di Perito Informatico",
     org: "ITIS G. Riva, Saronno",
     description:
-      "Basi di informatica industriale. È qui che ho capito che la programmazione non è solo logica, ma uno strumento per creare impatto reale nel mondo del lavoro.",
+      "Basi di informatica e telecomunicazioni. Qui ho capito che l'informatica non è solo logica, ma uno strumento per creare impatto reale nel mondo.",
     tag: "education",
   },
   {
@@ -86,7 +86,7 @@ export const timeline: TimelineItem[] = [
     title: "IoT / SAP MII Developer",
     org: "Altea Federation",
     description:
-      "Capitolo IoT: Lamborghini, Luxottica, CIT. Sviluppo soluzioni dove il codice ha conseguenze fisiche. Se il sistema si ferma, si ferma la produzione. Una bella palestra per i nervi.",
+      "Capitolo IoT: Lamborghini, Luxottica, CIT. Sviluppo soluzioni dove il codice ha conseguenze fisiche. Se il sistema si ferma, si ferma la produzione. Una bella palestra per i nervi!",
     tag: "work",
   },
   {
@@ -102,7 +102,7 @@ export const timeline: TimelineItem[] = [
     title: "Fondazione WebHub",
     org: "webhub.agency",
     description:
-      "La mia agenzia. Un modo per sporcarmi le mani con progetti diversi dal solito corporate: siti per piccoli brand e soluzioni digitali sartoriali, senza troppi giri di parole.",
+      "Mi piace sia l'informatica che la grafica, perché non unire l'utile al dilettevole? Nasce WebHub: una Digital Agency a 360° per sporcarmi le mani (e arrotondare a fine mese) con progetti diversi dal solito corporate: siti per piccoli brand, grafica e marketing digitale.",
     tag: "project",
   },
   {
@@ -110,20 +110,20 @@ export const timeline: TimelineItem[] = [
     title: "DELMIA Apriso Developer",
     org: "Accenture · Agrati, Aerospace",
     description:
-      "Certificazioni e implementazioni MES Apriso in settori ad alta precisione. Process Builder, Business Components e integrazioni tra ERP e officina.",
+      "Certificazioni e implementazioni MES Apriso: Process Builder, Business Components e integrazioni tra ERP e MES.",
     tag: "work",
   },
   {
     year: "2025 · oggi",
     title: "AI tooling personale",
-    org: "apriso-docs · Hermit Survival AI",
+    org: "AI Projects",
     description:
-      "Esploro il potenziale degli LLM per rendere la documentazione tecnica industriale realmente interrogabile. Un tool nato per risolvere una mia frustrazione e diventato un asset per il team.",
+      "Esploro continuamente il potenziale degli LLM e applico ciò che imparo alla vita quotidiana (e non solo)",
     tag: "project",
   },
 ];
 
-export type SkillLevel = "Senior" | "Working" | "Familiar" | "Exposure";
+export type SkillLevel = "Mastery" | "Fluent" | "Competent" | "Exploring";
 
 export type Skill = {
   name: string;
@@ -145,11 +145,11 @@ export const skillGroups: SkillGroup[] = [
     label: "MES / ERP",
     description: "Il mio core professionale",
     skills: [
-      { name: "SAPUI5", level: "Senior", icon: "LayoutDashboard" },
-      { name: "SAP MII", level: "Senior", note: "PCo, BLS, SSCE", icon: "Factory" },
-      { name: "SAP PCo", level: "Working", icon: "Network" },
-      { name: "ABAP", level: "Working", icon: "FileCode" },
-      { name: "Apriso", level: "Working", note: "Process Builder, BC, DFC", icon: "Settings" },
+      { name: "SAPUI5", level: "Mastery", icon: "LayoutDashboard" },
+      { name: "SAP MII", level: "Mastery", note: "PCo, BLS, SSCE", icon: "Factory" },
+      { name: "SAP PCo", level: "Fluent", icon: "Network" },
+      { name: "ABAP", level: "Fluent", icon: "FileCode" },
+      { name: "Apriso", level: "Fluent", note: "Process Builder, BC, DFC", icon: "Settings" },
     ],
   },
   {
@@ -157,12 +157,12 @@ export const skillGroups: SkillGroup[] = [
     label: "Frontend",
     description: "Enterprise e progetti web",
     skills: [
-      { name: "JS ES6", level: "Senior", icon: "FileJson" },
-      { name: "HTML/CSS", level: "Senior", icon: "Layout" },
-      { name: "TS", level: "Working", icon: "Code" },
-      { name: "React/Next", level: "Working", icon: "Atom" },
-      { name: "Tailwind", level: "Working", icon: "Paintbrush" },
-      { name: "WordPress", level: "Working", icon: "LayoutTemplate" },
+      { name: "JS ES6", level: "Mastery", icon: "FileJson" },
+      { name: "HTML/CSS", level: "Mastery", icon: "Layout" },
+      { name: "TS", level: "Fluent", icon: "Code" },
+      { name: "React/Next", level: "Fluent", icon: "Atom" },
+      { name: "Tailwind", level: "Fluent", icon: "Paintbrush" },
+      { name: "WordPress", level: "Fluent", icon: "LayoutTemplate" },
     ],
   },
   {
@@ -170,12 +170,12 @@ export const skillGroups: SkillGroup[] = [
     label: "Backend",
     description: "Database e integrazioni",
     skills: [
-      { name: "SQL Server", level: "Working", icon: "Database" },
-      { name: "Oracle", level: "Familiar", icon: "DatabaseBackup" },
-      { name: "HANA", level: "Familiar", icon: "Server" },
-      { name: "REST APIs", level: "Senior", icon: "Braces" },
-      { name: "OData", level: "Working", icon: "Globe" },
-      { name: "MQTT", level: "Working", icon: "Cable" },
+      { name: "SQL Server", level: "Fluent", icon: "Database" },
+      { name: "Oracle", level: "Competent", icon: "DatabaseBackup" },
+      { name: "HANA", level: "Competent", icon: "Server" },
+      { name: "REST APIs", level: "Mastery", icon: "Braces" },
+      { name: "OData", level: "Fluent", icon: "Globe" },
+      { name: "MQTT", level: "Fluent", icon: "Cable" },
     ],
   },
   {
@@ -183,12 +183,13 @@ export const skillGroups: SkillGroup[] = [
     label: "AI / LLM",
     description: "Sperimentazione e automazione",
     skills: [
-      { name: "Anthropic", level: "Working", icon: "Brain" },
-      { name: "MCP", level: "Working", icon: "Plug" },
-      { name: "Claude Code", level: "Working", icon: "Terminal" },
-      { name: "Prompting", level: "Working", icon: "Terminal" },
-      { name: "RAG", level: "Working", note: "llama.cpp, GGUF", icon: "FileText" },
-      { name: "Perplexity", level: "Familiar", icon: "Compass" },
+      { name: "Gemini", level: "Fluent", icon: "Brain" },
+      { name: "MCP", level: "Fluent", icon: "Plug" },
+      { name: "Claude Code", level: "Fluent", icon: "Terminal" },
+      { name: "Prompting", level: "Fluent", icon: "Terminal" },
+      { name: "RAG", level: "Fluent", note: "llama.cpp, GGUF", icon: "FileText" },
+      { name: "Ollama", level: "Fluent", icon: "Box" },
+      { name: "Perplexity", level: "Competent", icon: "Compass" },
     ],
   },
   {
@@ -196,11 +197,11 @@ export const skillGroups: SkillGroup[] = [
     label: "Design",
     description: "Post-produzione e 3D",
     skills: [
-      { name: "Photoshop", level: "Working", icon: "Image" },
-      { name: "Lightroom", level: "Working", icon: "Sliders" },
-      { name: "Illustrator", level: "Familiar", icon: "PenTool" },
-      { name: "After Effects", level: "Familiar", icon: "Video" },
-      { name: "Blender", level: "Familiar", icon: "Box" },
+      { name: "Photoshop", level: "Fluent", icon: "Image" },
+      { name: "Lightroom", level: "Fluent", icon: "Sliders" },
+      { name: "Illustrator", level: "Competent", icon: "PenTool" },
+      { name: "After Effects", level: "Competent", icon: "Video" },
+      { name: "Blender", level: "Competent", icon: "Box" },
     ],
   },
   {
@@ -208,20 +209,20 @@ export const skillGroups: SkillGroup[] = [
     label: "Dev Tools",
     description: "Versionamento e OS",
     skills: [
-      { name: "Git", level: "Senior", icon: "GitBranch" },
-      { name: "Linux", level: "Working", icon: "TerminalSquare" },
-      { name: "Bash", level: "Working", icon: "Terminal" },
-      { name: "VS Code", level: "Senior", icon: "Code2" },
-      { name: "Postman", level: "Working", icon: "Send" },
+      { name: "Git", level: "Mastery", icon: "GitBranch" },
+      { name: "Linux", level: "Fluent", icon: "TerminalSquare" },
+      { name: "Bash", level: "Fluent", icon: "Terminal" },
+      { name: "VS Code", level: "Mastery", icon: "Code2" },
+      { name: "Postman", level: "Fluent", icon: "Send" },
     ],
   },
 ];
 
 export const levelTone: Record<SkillLevel, string> = {
-  Senior: "bg-accent-soft text-accent border-accent/30",
-  Working: "bg-surface text-foreground/90 border-border",
-  Familiar: "bg-surface/60 text-muted border-border",
-  Exposure: "bg-surface/40 text-muted/70 border-border",
+  Mastery: "bg-accent-soft text-accent border-accent/30",
+  Fluent: "bg-surface text-foreground/90 border-border",
+  Competent: "bg-surface/60 text-muted border-border",
+  Exploring: "bg-surface/40 text-muted/70 border-border",
 };
 
 export type ProjectCategory = "featured" | "side";

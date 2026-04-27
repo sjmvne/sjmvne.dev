@@ -10,10 +10,15 @@ import {
   SiSap,
   SiDassaultsystemes,
   SiJavascript,
+  SiTypescript,
   SiHtml5,
+  SiCss,
   SiNextdotjs,
+  SiReact,
   SiTailwindcss,
   SiWordpress,
+  SiJquery,
+  SiLodash,
   SiJson,
   SiMqtt,
   SiBlender,
@@ -22,17 +27,22 @@ import {
   SiGit,
   SiLinux,
   SiGnubash,
-  SiPostman
+  SiPostman,
+  SiMysql,
+  SiVscodium,
+  SiDatagrip,
+  SiGooglegemini,
+  SiOllama
 } from "@icons-pack/react-simple-icons";
 
-const levels: SkillLevel[] = ["Senior", "Working", "Familiar", "Exposure"];
+const levels: SkillLevel[] = ["Mastery", "Fluent", "Competent", "Exploring"];
 
 // Bar widths per level for the "signal strength" indicator
 const levelBar: Record<SkillLevel, number> = {
-  Senior: 3,
-  Working: 2,
-  Familiar: 1,
-  Exposure: 0,
+  Mastery: 3,
+  Fluent: 2,
+  Competent: 1,
+  Exploring: 0,
 };
 
 function SignalBars({ level }: { level: SkillLevel }) {
@@ -54,25 +64,45 @@ function SignalBars({ level }: { level: SkillLevel }) {
 }
 
 const skillToSimpleIcon: Record<string, any> = {
+  // MES / ERP
   "SAPUI5": SiSap,
   "SAP MII": SiSap,
+  "SAP ME": SiSap,
   "SAP PCo": SiSap,
   "ABAP": SiSap,
+  "HANA": SiSap,
   "Apriso": SiDassaultsystemes,
+  
+  // Frontend
   "JS ES6": SiJavascript,
-  "HTML/CSS": SiHtml5,
+  "TS": SiTypescript,
+  "HTML/CSS": SiCss,
   "React/Next": SiNextdotjs,
   "Tailwind": SiTailwindcss,
   "WordPress": SiWordpress,
+  "jQuery": SiJquery,
+  "Lodash": SiLodash,
+
+  // Backend / Data
+  "SQL Server": SiDatagrip,
+  "MySQL": SiMysql,
   "REST APIs": SiJson,
   "MQTT": SiMqtt,
-  "Blender": SiBlender,
-  "Anthropic": SiAnthropic,
+  
+  // AI / LLM
+  "Gemini": SiGooglegemini,
+  "Ollama": SiOllama,
   "Perplexity": SiPerplexity,
-  "Claude Code": SiNextdotjs,
+  "Claude Code": SiAnthropic,
+  
+  // Design
+  "Blender": SiBlender,
+
+  // Dev Tools
   "Git": SiGit,
   "Linux": SiLinux,
   "Bash": SiGnubash,
+  "VS Code": SiVscodium,
   "Postman": SiPostman,
 };
 
@@ -137,27 +167,27 @@ export function SkillsSection() {
         </div>
         <div className="flex flex-wrap justify-center gap-6">
           <div className="flex items-center gap-3">
-            <SignalBars level="Senior" />
+            <SignalBars level="Mastery" />
             <span className="font-mono text-[10px] uppercase tracking-tighter text-foreground/70">
-              Senior
+              Mastery
             </span>
           </div>
           <div className="flex items-center gap-3">
-            <SignalBars level="Working" />
+            <SignalBars level="Fluent" />
             <span className="font-mono text-[10px] uppercase tracking-tighter text-foreground/70">
-              Working
+              Fluent
             </span>
           </div>
           <div className="flex items-center gap-3">
-            <SignalBars level="Familiar" />
+            <SignalBars level="Competent" />
             <span className="font-mono text-[10px] uppercase tracking-tighter text-foreground/70">
-              Familiar
+              Competent
             </span>
           </div>
           <div className="flex items-center gap-3">
-            <SignalBars level="Exposure" />
+            <SignalBars level="Exploring" />
             <span className="font-mono text-[10px] uppercase tracking-tighter text-foreground/70">
-              Exposure
+              Exploring
             </span>
           </div>
         </div>

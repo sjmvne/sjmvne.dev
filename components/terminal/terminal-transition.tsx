@@ -96,7 +96,7 @@ function Typewriter({
   return (
     <>
       {displayed}
-      <span className="inline-block h-5 w-2.5 translate-y-0.5 animate-pulse bg-violet-400" />
+      <span className="inline-block h-6 w-3 sm:h-8 sm:w-4 translate-y-1 animate-pulse bg-violet-400" />
     </>
   );
 }
@@ -170,7 +170,7 @@ export function TerminalTransitionProvider({
               }}
             />
 
-            <div className="font-mono text-lg sm:text-2xl text-violet-400">
+            <div className="w-full max-w-md sm:max-w-xl font-mono text-xl sm:text-3xl text-violet-400 whitespace-nowrap overflow-hidden">
               <span className="text-violet-300/70">sjmvne@dev</span>
               <span className="text-white/40">:</span>
               <span className="text-violet-500/70">~</span>
@@ -185,7 +185,7 @@ export function TerminalTransitionProvider({
               {(phase === "hold" || phase === "fadeout") && (
                 <>
                   <span>{transition.command}</span>
-                  <span className="inline-block h-5 w-2.5 translate-y-0.5 bg-violet-400" />
+                  <span className="inline-block h-6 w-3 sm:h-8 sm:w-4 translate-y-1 bg-violet-400" />
                 </>
               )}
             </div>
